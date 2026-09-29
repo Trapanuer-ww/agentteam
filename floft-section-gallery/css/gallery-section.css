@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Секция «Площадка для любого мероприятия»
+   Фото-грид: 2 крупных фото в первой строке + 3 фото поменьше во второй,
+   заголовок слева, CTA-кнопка «Посмотреть галерею» по центру внизу.
+   ========================================================================== */
+
+.event-gallery {
+  --gap: 1.5rem;
+  background: #ffffff;
+  color: #181818;
+  font-family: var(--font-main, Raleway, sans-serif);
+  padding: 5rem 2.5rem;
+}
+
+.event-gallery__title {
+  margin: 0 0 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 900px;
+}
+
+.event-gallery__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.event-gallery__row {
+  display: grid;
+  gap: var(--gap);
+}
+
+.event-gallery__row--top {
+  grid-template-columns: 1fr 1fr;
+}
+
+.event-gallery__row--bottom {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.event-gallery__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #ececec;
+}
+
+.event-gallery__row--top .event-gallery__item {
+  aspect-ratio: 4 / 3;
+}
+
+.event-gallery__row--bottom .event-gallery__item {
+  aspect-ratio: 3 / 4;
+}
+
+.event-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.event-gallery__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.event-gallery__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.25rem;
+  border-radius: 999px;
+  background: #181818;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.event-gallery__button:hover {
+  background: #303030;
+}
+
+@media (max-width: 900px) {
+  .event-gallery {
+    padding: 3.5rem 1.5rem;
+  }
+  .event-gallery__row--top,
+  .event-gallery__row--bottom {
+    grid-template-columns: 1fr 1fr;
+  }
+  .event-gallery__row--bottom .event-gallery__item:nth-child(3) {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 560px) {
+  .event-gallery__row--top,
+  .event-gallery__row--bottom {
+    grid-template-columns: 1fr;
+  }
+  .event-gallery__row--bottom .event-gallery__item:nth-child(3) {
+    grid-column: auto;
+    aspect-ratio: 3 / 4;
+  }
+}
