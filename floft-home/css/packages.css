@@ -1,12 +1,12 @@
-/* Блок «Стоимость» (второй вариант главной): три примера расчёта видны сразу, без раскрытий и прокрутки.
-   Высота блока — не больше 3/4 экрана. Токены, .wrap, .h2, .more — из home.css. */
+/* Блок «Стоимость» (второй вариант главной): три тарифа аренды карточками, как в классической таблице цен.
+   Добавки каждого тарифа выделены мягким красным внутри карточки; тариф, который советуем, — красной
+   галочкой у названия и тонкой красной обводкой. Высота блока — не больше 3/4 экрана.
+   Токены, .wrap, .h2, .btn — из home.css. */
 
-.pk{padding-block:clamp(26px,4.5vh,52px);background:var(--paper)}
-.pk__head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;margin-bottom:clamp(12px,2vh,20px)}
+.pk{padding-block:clamp(26px,4.4vh,50px);background:var(--paper)}
+.pk__head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 32px;margin-bottom:clamp(12px,2vh,22px)}
 .pk .h2{font-size:clamp(24px,2.6vw,38px)}
 
-/* переключатели: гости и день */
-.pk__ctl{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center}
 .seg{display:inline-flex;align-items:center;gap:10px}
 .seg__lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
 .seg__row{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:rgba(255,255,255,.4)}
@@ -15,80 +15,90 @@
 .seg__btn:hover{color:var(--ink)}
 .seg__btn[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 
-/* главные преимущества — то, что уже входит в аренду: мягкая красная полоса, как у кнопки первого экрана, только светлее */
-.pk__incl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,22px);margin-bottom:clamp(10px,1.6vh,16px)}
-.pk__incl li{padding:8px 14px;font-size:14px;font-weight:600;line-height:1.3;color:var(--accent-dark);
-  background:linear-gradient(90deg,rgba(194,42,25,.17) 0,rgba(194,42,25,.08) 55%,rgba(194,42,25,0) 100%);border-radius:2px 0 0 2px}
+/* карточки тарифов */
+.pk__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,22px);align-items:stretch}
+.tier{display:flex;flex-direction:column;padding:clamp(18px,1.9vw,28px);background:rgba(255,255,255,.55);border:1px solid var(--line);
+  transition:border-color .25s var(--ease)}
+.tier:hover{border-color:var(--ink)}
+.tier--best{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.tier--best:hover{border-color:var(--accent)}
 
-/* три примера */
-.pk__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,22px)}
-.fmt{display:grid;grid-template-columns:minmax(0,1fr) auto;align-content:start;gap:0 14px;padding:clamp(16px,1.8vw,26px);
-  background:rgba(255,255,255,.55);border:1px solid var(--line);transition:border-color .25s var(--ease)}
-.fmt:hover{border-color:var(--ink)}
-.fmt__name{grid-column:1/-1;font-family:var(--display);font-size:clamp(21px,1.9vw,26px);line-height:1.15}
-.fmt__sum{grid-column:1/-1;margin-top:8px;font-family:var(--display);font-size:clamp(28px,2.7vw,38px);line-height:1.05;letter-spacing:-.01em;white-space:nowrap}
-.fmt__sum small{margin-right:8px;font-family:var(--font);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
-.fmt__per{grid-column:1/-1;margin-top:5px;font-size:13.5px;color:var(--ink-2)}
-.fmt__short,.fmt__pg{display:none}
-.fmt__list{grid-column:1/-1;margin-top:14px;border-top:1px solid var(--line)}
-.fmt__list li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.35}
-.fmt__list li span:last-child{color:var(--ink-2);white-space:nowrap}
-.fmt__go{grid-column:1/-1;display:inline-flex;align-items:center;gap:10px;margin-top:12px;font-size:13.5px;font-weight:600;letter-spacing:.02em}
-.fmt:hover .arr{transform:translateX(5px)}
+.tier__name{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:clamp(21px,1.9vw,27px);line-height:1.15}
+.tier__mark{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff}
+.tier__price{margin-top:10px;font-family:var(--display);font-size:clamp(28px,2.7vw,38px);line-height:1.05;letter-spacing:-.01em;white-space:nowrap}
+.tier__price small{margin-right:8px;font-family:var(--font);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.tier__for{margin-top:8px;min-height:2.9em;font-size:14px;line-height:1.45;color:var(--ink-2)}
 
-.pk__foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 32px;align-items:center;margin-top:clamp(8px,1.4vh,14px)}
+.tier__list{display:grid;gap:3px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.tier__list li{display:flex;align-items:center;gap:9px;padding:4px 8px 4px 6px;font-size:14px;line-height:1.35}
+.tier__list .ck{flex:none;color:var(--ink-2)}
+.f-short{display:none}
+/* добавки тарифа: мягкая красная полоса, как у кнопки первого экрана, только светлее */
+.tier__list .is-plus{font-weight:600;color:var(--accent-dark);
+  background:linear-gradient(90deg,rgba(194,42,25,.15) 0,rgba(194,42,25,.07) 55%,rgba(194,42,25,0) 100%);border-radius:2px 0 0 2px}
+.tier__list .is-plus .ck{color:var(--accent)}
+
+.tier__go{width:100%;min-height:46px;margin-top:auto}
+.tier__list+.tier__go{margin-top:auto}
+.tier__list{margin-bottom:16px}
+.pk .btn--line{border-color:var(--ink)}
+
+.pk__foot{display:grid;gap:2px;margin-top:clamp(8px,1.4vh,14px)}
+.pk__food{font-size:13.5px;line-height:1.5;color:var(--ink)}
 .pk__note{font-size:12.5px;line-height:1.5;color:var(--ink-2)}
 
 /* якорь формы не должен прятаться под закреплённой шапкой */
 #visit{scroll-margin-top:62px}
 
-/* невысокие ноутбуки и планшеты: чуть плотнее */
+/* невысокие экраны ноутбуков и планшеты: описание тарифа убираем, строки плотнее */
 @media (min-width:761px) and (max-height:800px){
-  .fmt__go{display:none}
-  .fmt__list{margin-top:10px}
-  .fmt__list li{padding:5px 0}
+  .tier__for{display:none}
+  .tier{padding-block:16px}
+  .tier__list{margin-top:10px;padding-top:8px;margin-bottom:12px}
+  .tier__list li{padding-block:3px}
+  .tier__go{min-height:42px}
 }
 @media (min-width:761px) and (max-width:1100px){
-  .pk__incl li{padding:7px 10px;font-size:13px}
-  .pk__foot{grid-template-columns:1fr;gap:0}
-  .pk__foot .more{justify-self:start}
+  .tier__list li{font-size:13px}
+  .tier__for{font-size:13px}
 }
 
-/* телефон: три примера — тремя короткими строками, всё на одном экране */
+/* телефон: те же три тарифа, но каждый — короткой карточкой; все три видны сразу */
 @media (max-width:760px){
   .pk{padding-block:22px}
-  .pk__head{display:block;margin-bottom:10px}
+  .pk__head{margin-bottom:10px}
   .pk .h2{font-size:23px}
-  .pk__ctl{display:grid;grid-template-columns:4fr 3fr;gap:8px;margin-top:10px}
-  .seg{display:block}
   .seg__lbl{display:none}
-  .seg__row{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:100%}
-  .seg__btn{padding:0;height:32px}
-
-  .pk__incl{display:block;margin-bottom:10px;padding:7px 12px;font-size:12.5px;font-weight:600;line-height:1.4;color:var(--accent-dark);
-    background:linear-gradient(90deg,rgba(194,42,25,.17) 0,rgba(194,42,25,.08) 60%,rgba(194,42,25,.02) 100%);border-radius:2px}
-  .pk__incl li{display:inline;padding:0;font-size:inherit;background:none}
-  .pk__incl li+li::before{content:" · "}
+  .seg__btn{height:30px;padding:0 13px;font-size:13px}
 
   .pk__grid{grid-template-columns:1fr;gap:6px}
-  .fmt{padding:9px 14px;align-items:baseline}
-  .fmt__name{grid-column:1;font-size:19px}
-  .fmt__sum{grid-column:2;grid-row:1;margin:0;font-family:var(--font);font-size:15.5px;font-weight:700;letter-spacing:0}
-  .fmt__sum small{margin-right:4px;font-size:12px;letter-spacing:0;text-transform:none;font-weight:400}
-  .fmt__per,.fmt__list,.fmt__go{display:none}
-  .fmt__short,.fmt__pg{display:block;margin-top:1px;font-size:12.5px;color:var(--ink-2);white-space:nowrap}
-  .fmt__short{grid-column:1;overflow:hidden;text-overflow:ellipsis}
-  .fmt__pg{grid-column:2;text-align:right}
+  .tier{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 12px;padding:10px 14px}
+  .tier__name{font-size:20px}
+  .tier__mark{width:18px;height:18px}
+  .tier__price{grid-column:2;grid-row:1;margin:0;font-family:var(--font);font-size:15.5px;font-weight:700;letter-spacing:0}
+  .tier__price small{margin-right:4px;font-size:12px;font-weight:400;letter-spacing:0;text-transform:none}
+  .tier__for,.tier__go,.f-full{display:none}
+  .f-short{display:inline}
+  .tier__list{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:3px 4px;margin:6px 0 0;padding:0;border:0}
+  .tier__list li{gap:4px;padding:2px 7px 2px 0;font-size:12.5px;white-space:nowrap}
+  .tier__list .is-plus{padding-left:5px}
+  .tier__list .ck{width:10px;height:10px}
+  .tier__list .is-plus{background:rgba(194,42,25,.11);border-radius:2px}
 
-  .pk__foot{grid-template-columns:1fr;gap:0;margin-top:8px}
+  .pk__foot{margin-top:8px}
+  .pk__food{font-size:12.5px;line-height:1.45}
   .pk__note{font-size:12px;line-height:1.45}
-  .pk__foot .more{justify-self:start;min-height:40px}
 }
 @media (max-width:380px){
   .pk .h2{font-size:20.5px}
+  .tier__list li{font-size:12px;padding-right:5px}
 }
-/* низкие телефоны: остаются три строки с ценами и главное условие */
+/* низкие телефоны: остаются три тарифа и строка про кейтеринг */
 @media (max-width:760px) and (max-height:780px){
-  .pk{padding-block:18px}
-  .pk__note-x,.pk__foot .more{display:none}
+  .pk{padding-block:16px}
+  .pk__head{margin-bottom:8px}
+  .tier{padding-block:8px}
+  .tier__list{margin-top:4px;gap:2px 4px}
+  .pk__food{font-size:12px}
+  .pk__note{display:none}
 }

@@ -1,33 +1,22 @@
 <!-- ============================ СТОИМОСТЬ ============================
-     Три примера расчёта для главной: конференция, фуршет, банкет — все три видны сразу, без раскрытий.
-     Блок рассчитан на высоту не больше 3/4 экрана. Расчёт и цены — в js/packages.js. -->
+     Три тарифа аренды для главной: каждый следующий включает предыдущий. Тариф, который советуем,
+     отмечен красной галочкой и тонкой красной обводкой. Блок рассчитан на высоту не больше 3/4 экрана.
+     Тексты, состав и цены — в js/packages.js. -->
 <section class="pk" id="packages" aria-labelledby="pk-title">
   <div class="wrap">
     <header class="pk__head">
       <h2 class="h2" id="pk-title">Сколько стоит мероприятие</h2>
-      <div class="pk__ctl">
-        <div class="seg" role="group" aria-label="Число гостей">
-          <span class="seg__lbl">Гостей</span>
-          <span class="seg__row" id="ctl-guests"></span>
-        </div>
-        <div class="seg" role="group" aria-label="День недели">
-          <span class="seg__lbl">День</span>
-          <span class="seg__row" id="ctl-day"></span>
-        </div>
+      <div class="seg" role="group" aria-label="День недели">
+        <span class="seg__lbl">День</span>
+        <span class="seg__row" id="ctl-day"></span>
       </div>
     </header>
-
-    <ul class="pk__incl" aria-label="Уже входит в аренду">
-      <li>Весь лофт на сутки, с 07:00 до 03:00</li>
-      <li>Администратор и клининг</li>
-      <li>Мебель, 170 стульев и бар с оборудованием</li>
-    </ul>
 
     <div class="pk__grid" id="pk-grid" aria-live="polite"></div>
 
     <div class="pk__foot">
-      <p class="pk__note"><span>Цены «от», прайс 2026 года. Аренда 200 / 280 тыс. ₽ — при кейтеринге партнёра площадки 3F.</span> <span class="pk__note-x">Без кейтеринга — 330 / 400 тыс. ₽. Питание на гостя: кофе-брейк от 2 500 ₽, фуршет от 6 500 ₽, банкет от 10 500 ₽. Декабрь считаем отдельно.</span></p>
-      <a class="more" href="#visit" data-ask="sample">Получить расчёт на мою дату <svg class="arr" viewBox="0 0 18 10" width="18" height="10" aria-hidden="true"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
+      <p class="pk__food">Кейтеринг партнёра площадки 3F считается отдельно: кофе-брейк от 2 500 ₽, фуршет от 6 500 ₽, банкет от 10 500 ₽ на гостя.</p>
+      <p class="pk__note">Цены аренды действуют при кейтеринге 3F; без кейтеринга — 330 / 400 тыс. ₽. Декабрь считаем отдельно. Прайс 2026 года.</p>
     </div>
   </div>
 </section>
