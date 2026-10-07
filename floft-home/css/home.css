@@ -63,6 +63,11 @@ address{font-style:normal}
   transition:background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
 .btn--accent{background:var(--accent);color:#fff}
 .btn--accent:hover{background:var(--accent-2)}
+/* Кнопка первого экрана: красная полоса, плотная под текстом и растворяющаяся вправо */
+.btn--fade{justify-content:flex-start;width:min(100%,720px);min-height:48px;font-weight:600;letter-spacing:.01em;
+  background:linear-gradient(90deg,var(--accent) 0,var(--accent) 30%,rgba(194,42,25,0) 100%) 0 0/100% 100% no-repeat;
+  transition:background-size .5s var(--ease)}
+.btn--fade:hover{background-color:transparent;background-size:135% 100%}
 .btn--line{border:1px solid currentColor}
 .btn--line:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .btn--sm{min-height:40px;padding:0 18px;font-size:14px}
