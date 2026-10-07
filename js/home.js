@@ -100,8 +100,8 @@
     if (t) { e.preventDefault(); openModal(t.getAttribute('data-intent'), t); }
   });
 
+  /* ---------- Формы: попап и встроенная в нижнем блоке ---------- */
   /* Маска телефона: +7 (XXX) XXX-XX-XX. Поле пустое, пока человек не начал ввод (без «+7 (___)» в value). */
-  var phone = $('[name="your-phone"]', modal);
   function digits(v) {
     var d = v.replace(/\D/g, '');
     if (/^\s*(\+?7|8)/.test(v)) d = d.slice(1);       // «+7», «7» или «8» в начале — код страны, не часть номера
@@ -115,7 +115,14 @@
     if (d.length >= 8) s += '-' + d.slice(8, 10);
     return s;
   }
-  if (phone) {
+
+  /* Одна логика на обе формы: маска, проверка, экран «отправлено».
+     onSuccess вызывается и в прототипе, и на сайте — по штатному событию Contact Form 7 (wpcf7mailsent);
+     цели Метрики (cf7_success и автоцель формы) продолжают срабатывать как раньше. */
+  function bindForm(form, errBox, onSuccess) {
+    var phone = $('[name="your-phone"]', form);
+    var agreeBox = $('.agree', form);
+
     phone.addEventListener('input', function () {
       phone.value = fmt(digits(phone.value), /\d/.test(phone.value));
     });
@@ -125,56 +132,66 @@
         phone.value = fmt(digits(phone.value).slice(0, -1));
       }
     });
-  }
 
-  function showError(msg, field) {
-    errBox.textContent = msg;
-    errBox.hidden = false;
-    if (field && field.focus) field.focus();
-  }
-  function validate() {
-    var name = $('[name="your-name"]', form);
-    var agree = $$('[data-agree]', form);
-    $$('[aria-invalid]', form).forEach(function (el) { el.removeAttribute('aria-invalid'); });
-    $('.agree', form).classList.remove('is-invalid');
-    errBox.hidden = true;
-
-    if (name.value.trim().length < 2) { name.setAttribute('aria-invalid', 'true'); showError('Напишите, как к вам обращаться.', name); return false; }
-    if (digits(phone.value).length < 10) { phone.setAttribute('aria-invalid', 'true'); showError('Укажите телефон полностью — 10 цифр после +7.', phone); return false; }
-    if (!agree.every(function (c) { return c.checked; })) {
-      $('.agree', form).classList.add('is-invalid');
-      showError('Отметьте оба согласия — без них мы не можем принять заявку.', agree.filter(function (c) { return !c.checked; })[0]);
-      return false;
+    function showError(msg, field) {
+      errBox.textContent = msg;
+      errBox.hidden = false;
+      if (field && field.focus) field.focus();
     }
-    return true;
+    function validate() {
+      var name = $('[name="your-name"]', form);
+      var agree = $$('[data-agree]', form);
+      $$('[aria-invalid]', form).forEach(function (el) { el.removeAttribute('aria-invalid'); });
+      agreeBox.classList.remove('is-invalid');
+      errBox.hidden = true;
+
+      if (name.value.trim().length < 2) { name.setAttribute('aria-invalid', 'true'); showError('Напишите, как к вам обращаться.', name); return false; }
+      if (digits(phone.value).length < 10) { phone.setAttribute('aria-invalid', 'true'); showError('Укажите телефон полностью — 10 цифр после +7.', phone); return false; }
+      if (!agree.every(function (c) { return c.checked; })) {
+        agreeBox.classList.add('is-invalid');
+        showError('Отметьте оба согласия — без них мы не можем принять заявку.', agree.filter(function (c) { return !c.checked; })[0]);
+        return false;
+      }
+      return true;
+    }
+    /* Как только человек начал исправлять поле — убираем сообщение об ошибке и красную рамку */
+    form.addEventListener('input', function (e) {
+      errBox.hidden = true;
+      if (e.target.removeAttribute) e.target.removeAttribute('aria-invalid');
+      agreeBox.classList.remove('is-invalid');
+    });
+    function done() { form.reset(); onSuccess(); }
+
+    if (form.hasAttribute('data-demo')) {
+      /* ПРОТОТИП: заявка никуда не отправляется. На сайте этот блок не нужен — отправкой занимается Contact Form 7. */
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if ($('[name="kc_honeypot"]', form).value) return;
+        if (validate()) done();
+      });
+    }
+    document.addEventListener('wpcf7mailsent', function (e) {
+      if (e.target === form || form.contains(e.target) || (e.target.contains && e.target.contains(form))) done();
+    });
   }
-  /* Как только человек начал исправлять поле — убираем сообщение об ошибке и красную рамку */
-  form.addEventListener('input', function (e) {
-    errBox.hidden = true;
-    if (e.target.removeAttribute) e.target.removeAttribute('aria-invalid');
-    $('.agree', form).classList.remove('is-invalid');
-  });
-  function showSuccess() {
+
+  bindForm(form, errBox, function () {
     formBox.hidden = true;
     okBox.hidden = false;
     var h = $('.modal__title', okBox);
     if (h) h.focus();
-    form.reset();
-  }
+  });
 
-  if (form.hasAttribute('data-demo')) {
-    /* ПРОТОТИП: заявка никуда не отправляется. На сайте этот блок не нужен — отправкой занимается Contact Form 7. */
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if ($('[name="kc_honeypot"]', form).value) return;
-      if (validate()) showSuccess();
+  var visitForm = $('#visit-form');
+  if (visitForm) {
+    bindForm(visitForm, $('#visit-err'), function () {
+      var ok = $('#visit-ok');
+      visitForm.hidden = true;
+      ok.hidden = false;
+      var t = $('.visit__ok-t', ok);
+      if (t) t.focus();
     });
   }
-  /* На сайте: события Contact Form 7. Экран «Заявка отправлена» показываем по штатному событию плагина,
-     цели Метрики (cf7_success и автоцель формы) продолжают срабатывать как раньше. */
-  document.addEventListener('wpcf7mailsent', function (e) {
-    if (modal.contains(e.target)) showSuccess();
-  });
 
   /* ---------- Отзывы: стрелки на десктопе, свайп на телефоне ---------- */
   var track = $('#rv-track');
@@ -225,7 +242,7 @@
   }
   if (fab && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (en) { state.hero = en[0].isIntersecting; updateFab(); }).observe(heroCta);
-    new IntersectionObserver(function (en) { state.visit = en[0].isIntersecting; updateFab(); }, { threshold: .25 }).observe($('.visit__cta', visit));
+    new IntersectionObserver(function (en) { state.visit = en[0].isIntersecting; updateFab(); }, { threshold: .25 }).observe($('#visit-box', visit));
   }
 
   /* ---------- Cookie ---------- */

@@ -244,11 +244,38 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 /* ---------- visit (final CTA) ---------- */
 .visit{background:var(--night);color:#fff}
 .visit__in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,88px);align-items:center;padding-block:var(--sec)}
-.visit__txt>p{margin-top:20px;max-width:26em;font-size:18px;color:rgba(255,255,255,.78)}
-.visit__cta{display:flex;align-items:center;flex-wrap:wrap;gap:18px 32px;margin-top:36px}
-.more--btn{color:#fff}
-.visit__txt>.visit__alt{margin-top:30px;font-size:15px;color:rgba(255,255,255,.6)}
-.visit__alt a{color:#fff;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:2px;white-space:nowrap}
+.visit__lead{margin-top:20px;max-width:27em;font-size:18px;color:rgba(255,255,255,.78)}
+
+/* Встроенная форма: тонкие поля на тёмном, одна кнопка; контакты — отдельной строкой под линией */
+.visit__form{margin-top:32px;max-width:540px}
+.visit__form .wpcf7-form{display:grid;gap:14px}
+.visit__fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.visit__form .fld__l{color:rgba(255,255,255,.66)}
+.visit__form .wpcf7-text,.visit__form .wpcf7-tel{width:100%;height:50px;padding:0 14px;font-size:16px;color:#fff;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.32);border-radius:2px;-webkit-appearance:none;appearance:none;
+  transition:border-color .2s,background-color .2s}
+.visit__form .wpcf7-text::placeholder,.visit__form .wpcf7-tel::placeholder{color:rgba(255,255,255,.4)}
+.visit__form .wpcf7-text:focus,.visit__form .wpcf7-tel:focus{outline:0;border-color:#fff;background:rgba(255,255,255,.07)}
+.visit__form input:-webkit-autofill{-webkit-text-fill-color:#fff;-webkit-box-shadow:0 0 0 100px #1d1d1b inset;caret-color:#fff}
+.visit__form [aria-invalid="true"]{border-color:var(--accent-on-dark)}
+.visit__form .agree label{color:rgba(255,255,255,.66)}
+.visit__form .agree input{accent-color:var(--paper)}
+.visit__form .agree a:hover{color:#fff}
+.visit__form .agree.is-invalid input{outline-color:var(--accent-on-dark)}
+.visit__form .form-err{color:var(--accent-on-dark)}
+.visit__form .wpcf7-submit{justify-self:start;min-width:250px;margin-top:4px;border:0;cursor:pointer;-webkit-appearance:none;appearance:none}
+.visit__ok{padding:22px 24px;border:1px solid var(--line-inv)}
+.visit__ok[hidden],.visit__form form[hidden]{display:none}
+.visit__ok-t{font-family:var(--display);font-size:24px;line-height:1.2}
+.visit__ok p+p{margin-top:8px;color:rgba(255,255,255,.78)}
+.visit__ok .modal__demo{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)}
+
+.visit__contacts{display:grid;grid-template-columns:auto auto;justify-content:start;gap:10px clamp(32px,5vw,64px);
+  max-width:540px;margin-top:32px;padding-top:22px;border-top:1px solid var(--line-inv)}
+.visit__contacts dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.visit__contacts dd{margin-top:4px;font-size:17px;font-weight:600}
+.visit__contacts a{display:inline-block;padding-block:4px;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .3s var(--ease)}
+.visit__contacts a:hover{background-size:100% 1px}
 .visit__img{overflow:hidden;aspect-ratio:4/3;background:#1c1c1a}
 .visit__img img{width:100%;height:100%;object-fit:cover}
 
@@ -415,9 +442,11 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
   .quote{flex-basis:82%;min-height:0}
   .rv__nav{display:none}
 
-  .visit__cta{flex-direction:column;align-items:stretch;gap:10px}
-  .visit__cta .more{align-self:flex-start;min-height:44px}
-  .visit__txt>p{font-size:17px}
+  .visit__lead{font-size:17px}
+  .visit__fields{grid-template-columns:1fr}
+  .visit__form .wpcf7-submit{justify-self:stretch;width:100%}
+  .visit__contacts{grid-template-columns:1fr;gap:16px}
+  .visit__contacts a{padding-block:8px}
 
   .ftr__top{flex-direction:column;gap:14px}
   .ftr__contacts a,.ftr__nav a,.ftr__bot a{display:inline-block;padding-block:9px}
@@ -428,7 +457,6 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
   .ftr__bot .sep{display:none}
   .rv__sum{grid-template-columns:1fr}
   .rv__meta br{display:none}
-  .visit__alt a{display:inline-block;padding-block:9px;background-position:0 calc(100% - 8px)}
   .ftr__in{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}   /* место под плавающую кнопку */
 
   .fab{display:flex;gap:8px;position:fixed;z-index:45;left:12px;right:12px;bottom:calc(12px + var(--host-pad) + env(safe-area-inset-bottom,0px));
