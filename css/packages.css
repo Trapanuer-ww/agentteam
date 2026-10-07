@@ -1,10 +1,9 @@
-/* Блок «Пакеты» (вариант главной с примером расчёта) — компактная версия, не выше 3/4 экрана.
-   Варианты выбираются слева, состав выбранного показан справа. Токены, .wrap, .h2, .btn, .more — из home.css. */
+/* Блок «Стоимость» (второй вариант главной): три примера расчёта видны сразу, без раскрытий и прокрутки.
+   Высота блока — не больше 3/4 экрана. Токены, .wrap, .h2, .more — из home.css. */
 
-.pk{padding-block:clamp(28px,4.5vh,52px);background:var(--paper)}
-.pk__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 32px;margin-bottom:clamp(16px,2.6vh,26px)}
-.pk__eyebrow{margin-bottom:10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
-.pk .h2{font-size:clamp(25px,2.6vw,38px)}
+.pk{padding-block:clamp(26px,4.5vh,52px);background:var(--paper)}
+.pk__head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;margin-bottom:clamp(12px,2vh,20px)}
+.pk .h2{font-size:clamp(24px,2.6vw,38px)}
 
 /* переключатели: гости и день */
 .pk__ctl{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center}
@@ -16,110 +15,80 @@
 .seg__btn:hover{color:var(--ink)}
 .seg__btn[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 
-.pk__body{display:grid;grid-template-columns:minmax(230px,300px) minmax(0,1fr);gap:clamp(12px,1.4vw,22px);align-items:stretch}
+/* главные преимущества — то, что уже входит в аренду: мягкая красная полоса, как у кнопки первого экрана, только светлее */
+.pk__incl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,22px);margin-bottom:clamp(10px,1.6vh,16px)}
+.pk__incl li{padding:8px 14px;font-size:14px;font-weight:600;line-height:1.3;color:var(--accent-dark);
+  background:linear-gradient(90deg,rgba(194,42,25,.17) 0,rgba(194,42,25,.08) 55%,rgba(194,42,25,0) 100%);border-radius:2px 0 0 2px}
 
-/* варианты */
-.pk__tabs{display:grid;gap:8px;align-content:start}
-.tab{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:3px 12px;padding:13px 18px;text-align:left;
-  background:rgba(255,255,255,.55);border:1px solid var(--line);
-  transition:background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
-.tab:hover{border-color:var(--ink)}
-.tab__name{font-family:var(--display);font-size:21px;line-height:1.15}
-.tab--rec .tab__name::before{content:"";display:inline-block;width:7px;height:7px;margin-right:10px;vertical-align:middle;background:var(--accent)}
-.tab__price{font-size:14.5px;font-weight:600;white-space:nowrap}
-.tab__hint{grid-column:1/-1;font-size:12.5px;color:var(--ink-2)}
-.tab[aria-pressed="true"]{background:var(--night);border-color:var(--night);color:#fff}
-.tab[aria-pressed="true"] .tab__hint{color:rgba(255,255,255,.62)}
+/* три примера */
+.pk__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,22px)}
+.fmt{display:grid;grid-template-columns:minmax(0,1fr) auto;align-content:start;gap:0 14px;padding:clamp(16px,1.8vw,26px);
+  background:rgba(255,255,255,.55);border:1px solid var(--line);transition:border-color .25s var(--ease)}
+.fmt:hover{border-color:var(--ink)}
+.fmt__name{grid-column:1/-1;font-family:var(--display);font-size:clamp(21px,1.9vw,26px);line-height:1.15}
+.fmt__sum{grid-column:1/-1;margin-top:8px;font-family:var(--display);font-size:clamp(28px,2.7vw,38px);line-height:1.05;letter-spacing:-.01em;white-space:nowrap}
+.fmt__sum small{margin-right:8px;font-family:var(--font);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.fmt__per{grid-column:1/-1;margin-top:5px;font-size:13.5px;color:var(--ink-2)}
+.fmt__short,.fmt__pg{display:none}
+.fmt__list{grid-column:1/-1;margin-top:14px;border-top:1px solid var(--line)}
+.fmt__list li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.35}
+.fmt__list li span:last-child{color:var(--ink-2);white-space:nowrap}
+.fmt__go{grid-column:1/-1;display:inline-flex;align-items:center;gap:10px;margin-top:12px;font-size:13.5px;font-weight:600;letter-spacing:.02em}
+.fmt:hover .arr{transform:translateX(5px)}
 
-/* выбранный вариант */
-.pk__panel{display:flex;flex-direction:column;padding:clamp(16px,1.9vw,26px);background:rgba(255,255,255,.55);border:1px solid var(--line)}
-.pk__top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px clamp(18px,2.4vw,36px);align-items:center}
-.pk__from{margin-right:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
-.pk__price{font-family:var(--display);font-size:clamp(30px,3vw,42px);line-height:1;letter-spacing:-.01em;white-space:nowrap}
-.pk__per{margin-top:6px;font-size:13.5px;color:var(--ink-2)}
-.pk__for{max-width:40ch;font-size:14.5px;line-height:1.45;color:var(--ink-2)}
-.pk__go{min-width:232px}
-.pk__toggle{display:none}
-
-.pk__detail{margin-top:14px;border-top:1px solid var(--line)}
-/* первые пять строк — базовый состав, вторая колонка — то, что добавляет «Максимум» */
-.pk__list{display:grid;grid-auto-flow:column;grid-template-rows:repeat(5,auto);grid-template-columns:1fr 1fr;column-gap:clamp(20px,3vw,48px)}
-.pk__list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 14px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.35}
-.li__n{font-weight:600}
-.li__p{grid-row:1;grid-column:2;font-size:13.5px;color:var(--ink-2);white-space:nowrap;text-align:right}
-.li__s{grid-column:1/-1;font-size:12.5px;color:var(--ink-2)}
-.li--new .li__n::before{content:"+";display:inline-block;margin-right:7px;color:var(--accent);font-weight:700}
-
-.pk__foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 28px;align-items:center;margin-top:12px}
+.pk__foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 32px;align-items:center;margin-top:clamp(8px,1.4vh,14px)}
 .pk__note{font-size:12.5px;line-height:1.5;color:var(--ink-2)}
-.pk__note b{color:var(--ink);font-weight:600}
-.pk__foot .more{justify-self:start}
 
 /* якорь формы не должен прятаться под закреплённой шапкой */
 #visit{scroll-margin-top:62px}
 
-/* уже 1200px: описание варианта и ссылка на пример КП уходят на свои строки, иначе текст сжимается в столбик */
-@media (max-width:1199px){
-  .pk__top{grid-template-columns:minmax(0,1fr) auto}
-  .pk__for{grid-column:1/-1;grid-row:2;max-width:none}
-  .pk__foot{grid-template-columns:1fr;gap:0}
-}
-
-/* невысокие экраны ноутбуков: пояснения к строкам и надзаголовок убираем, чтобы блок остался в 3/4 экрана */
-@media (min-width:761px) and (max-height:880px){
-  .li__s,.tab__hint{display:none}
-  .pk__list li{padding:6px 0}
-}
+/* невысокие ноутбуки и планшеты: чуть плотнее */
 @media (min-width:761px) and (max-height:800px){
-  .pk__eyebrow{display:none}
+  .fmt__go{display:none}
+  .fmt__list{margin-top:10px}
+  .fmt__list li{padding:5px 0}
 }
-@media (min-width:761px) and (max-width:1199px) and (max-height:800px){
-  .pk{padding-block:24px}
-  .pk__for{display:none}
-}
-
-/* планшет: варианты в ряд над составом */
-@media (max-width:959px){
-  .pk__body{grid-template-columns:1fr}
-  .pk__tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .tab{grid-template-columns:1fr;padding:12px 14px}
-  .tab__hint,.li__s{display:none}
-  .pk__list li{padding:7px 0}
+@media (min-width:761px) and (max-width:1100px){
+  .pk__incl li{padding:7px 10px;font-size:13px}
+  .pk__foot{grid-template-columns:1fr;gap:0}
+  .pk__foot .more{justify-self:start}
 }
 
-/* телефон: состав свёрнут под кнопку «Из чего складывается сумма» */
+/* телефон: три примера — тремя короткими строками, всё на одном экране */
 @media (max-width:760px){
-  .pk{padding-block:28px}
-  .pk__head{display:block;margin-bottom:14px}
-  .pk__ctl{display:grid;grid-template-columns:4fr 3fr;gap:8px;margin-top:12px}
+  .pk{padding-block:22px}
+  .pk__head{display:block;margin-bottom:10px}
+  .pk .h2{font-size:23px}
+  .pk__ctl{display:grid;grid-template-columns:4fr 3fr;gap:8px;margin-top:10px}
   .seg{display:block}
   .seg__lbl{display:none}
   .seg__row{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:100%}
-  .seg__btn{padding:0;height:34px}
+  .seg__btn{padding:0;height:32px}
 
-  .pk__tabs{gap:0;border:1px solid var(--line)}
-  .tab{display:block;padding:0 4px;height:42px;text-align:center;background:none;border:0;border-left:1px solid var(--line)}
-  .tab:first-child{border-left:0}
-  .tab__name{font-family:var(--font);font-size:13.5px;font-weight:600}
-  .tab--rec .tab__name::before,.tab__price,.tab__hint{display:none}
+  .pk__incl{display:block;margin-bottom:10px;padding:7px 12px;font-size:12.5px;font-weight:600;line-height:1.4;color:var(--accent-dark);
+    background:linear-gradient(90deg,rgba(194,42,25,.17) 0,rgba(194,42,25,.08) 60%,rgba(194,42,25,.02) 100%);border-radius:2px}
+  .pk__incl li{display:inline;padding:0;font-size:inherit;background:none}
+  .pk__incl li+li::before{content:" · "}
 
-  .pk__panel{padding:16px}
-  .pk__top{grid-template-columns:1fr;gap:6px}
-  .pk__price{font-size:32px}
-  .pk__for{grid-row:auto;font-size:14px}
-  .pk__go{width:100%;min-width:0;margin-top:6px}
-  .pk__toggle{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;margin-top:8px;
-    font-size:14px;font-weight:600;text-align:left;border-top:1px solid var(--line)}
-  .pk__toggle .chev{transition:transform .25s var(--ease)}
-  .pk__toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
-  .pk__detail{display:none;margin-top:0;border-top:0}
-  .pk__detail.is-open{display:block}
-  .pk__list{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:1fr}
-  .pk__foot{grid-template-columns:1fr}
+  .pk__grid{grid-template-columns:1fr;gap:6px}
+  .fmt{padding:9px 14px;align-items:baseline}
+  .fmt__name{grid-column:1;font-size:19px}
+  .fmt__sum{grid-column:2;grid-row:1;margin:0;font-family:var(--font);font-size:15.5px;font-weight:700;letter-spacing:0}
+  .fmt__sum small{margin-right:4px;font-size:12px;letter-spacing:0;text-transform:none;font-weight:400}
+  .fmt__per,.fmt__list,.fmt__go{display:none}
+  .fmt__short,.fmt__pg{display:block;margin-top:1px;font-size:12.5px;color:var(--ink-2);white-space:nowrap}
+  .fmt__short{grid-column:1;overflow:hidden;text-overflow:ellipsis}
+  .fmt__pg{grid-column:2;text-align:right}
+
+  .pk__foot{grid-template-columns:1fr;gap:0;margin-top:8px}
+  .pk__note{font-size:12px;line-height:1.45}
+  .pk__foot .more{justify-self:start;min-height:40px}
 }
-/* низкие телефоны */
+@media (max-width:380px){
+  .pk .h2{font-size:20.5px}
+}
+/* низкие телефоны: остаются три строки с ценами и главное условие */
 @media (max-width:760px) and (max-height:780px){
-  .pk{padding-block:24px}
-  .pk__eyebrow,.pk__for{display:none}
-  .pk__panel{padding:14px}
+  .pk{padding-block:18px}
+  .pk__note-x,.pk__foot .more{display:none}
 }
