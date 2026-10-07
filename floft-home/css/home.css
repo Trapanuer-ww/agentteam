@@ -68,7 +68,9 @@ address{font-style:normal}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 28px;
   font-size:14.5px;font-weight:600;letter-spacing:.03em;line-height:1;white-space:nowrap;border-radius:2px;
   transition:background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
-.btn--accent{background:var(--accent);color:#fff;transition:none}        /* кнопки действия при наведении не меняются */
+/* Кнопки действия при наведении слегка темнеют. Через filter, а не background: фон (в том числе градиент кнопки первого экрана) не трогаем. */
+.btn--accent{background:var(--accent);color:#fff;transition:filter .25s var(--ease)}
+.btn--accent:hover{filter:brightness(.88)}
 /* Кнопка первого экрана: красная полоса, плотная под текстом и растворяющаяся вправо */
 .btn--fade{justify-content:flex-start;width:min(100%,720px);min-height:48px;font-weight:600;letter-spacing:.01em;
   background:linear-gradient(90deg,var(--accent) 0,var(--accent) 30%,rgba(194,42,25,0) 100%) no-repeat}
