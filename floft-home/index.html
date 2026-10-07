@@ -20,12 +20,13 @@
 <meta name="theme-color" content="#121211">
 <link rel="icon" href="assets/img/logo.png">
 
-<link rel="preload" href="assets/fonts/jost-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/tenor-sans-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/mulish-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" type="image/avif" fetchpriority="high"
       imagesrcset="assets/img/hero-m-600.avif 600w, assets/img/hero-m-900.avif 900w" imagesizes="100vw" media="(max-width: 700px)">
 <link rel="preload" as="image" type="image/avif" fetchpriority="high"
       imagesrcset="assets/img/hero-1280.avif 1280w, assets/img/hero-1920.avif 1920w" imagesizes="100vw" media="(min-width: 701px)">
-<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/home.css?v=1007b">
 <script>document.documentElement.classList.add('js')</script>
 
 <script type="application/ld+json">
@@ -400,7 +401,8 @@
 
 <!-- ============================ POPUP ============================
      Разметка формы повторяет Contact Form 7 #114286 (попап «Оставить заявку» на f-loft.ru):
-     те же name у полей — your-name, your-phone, your-date, textarea-900, acceptance-226, kc_captcha, kc_honeypot.
+     те же name у полей — your-name, your-phone, your-date, textarea-900, acceptance-226, kc_honeypot.
+     Видимой проверки «выберите картинку» в форме нет (убрана по решению ML); осталось невидимое поле-ловушка kc_honeypot.
      На сайте вместо <form data-demo> вставляется шорткод этой формы; стили .wpcf7 из css/home.css её оформят.
      В прототипе форма НИКУДА не отправляется (data-demo). -->
 <dialog class="modal" id="lead" aria-labelledby="lead-title">
@@ -436,10 +438,6 @@
           <label><input type="checkbox" name="acceptance-226" value="1" data-agree><span>Даю <a href="https://f-loft.ru/soglasie/" target="_blank" rel="noopener">согласие на обработку персональных данных</a></span></label>
         </fieldset>
 
-        <fieldset class="captcha">
-          <legend>Выберите <b id="captcha-word">ключ</b>, чтобы отправить</legend>
-          <span class="captcha__opts" id="captcha-opts"></span>
-        </fieldset>
         <input class="hp" type="text" name="kc_honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <p class="form-err" id="lead-err" role="alert" hidden></p>
@@ -466,6 +464,6 @@
   <button class="btn btn--line btn--sm" type="button" id="cookie-ok">Подтверждаю</button>
 </div>
 
-<script src="js/home.js" defer></script>
+<script src="js/home.js?v=1007b" defer></script>
 </body>
 </html>
