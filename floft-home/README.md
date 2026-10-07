@@ -17,6 +17,15 @@ python3 -m http.server 8791 --directory floft-home
 
 Открывается и просто двойным кликом по `index.html`.
 
+## Два варианта страницы
+
+| Вариант | Файл | Открытая ссылка |
+|---|---|---|
+| 1. Без блока «Пакеты» | `index.html` | https://trapanuer-ww.github.io/agentteam/ |
+| 2. С блоком «Пакеты» (три варианта конференции с расчётом) | `packages.html` | https://trapanuer-ww.github.io/agentteam/packages.html |
+
+Вариант 2 руками не правится: он собирается из `index.html` скриптом `python3 tools/build_variants.py`, который вставляет `blocks/packages.html` после блока «Форматы и вместимость» и подключает `css/packages.css` и `js/packages.js`. Запускать после каждой правки `index.html`. Цены в блоке заданы в начале `js/packages.js`.
+
 ## Состав
 
 ```

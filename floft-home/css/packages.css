@@ -1,0 +1,69 @@
+/* Блок «Пакеты» (вариант главной с примером расчёта). Исходник блока: floft-packages/index.html.
+   Токены, .wrap, .h2, .btn, .more — из home.css. */
+/* ============================ ПАКЕТЫ ============================ */
+.pk{padding-block:var(--sec);background:var(--paper)}
+.pk__head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;margin-bottom:clamp(28px,3.6vw,52px)}
+.pk__eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:18px}
+.pk__lead{max-width:56ch;margin-top:18px;color:var(--ink-2)}
+
+/* переключатели: гости и день */
+.pk__ctl{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:flex-end}
+.seg{display:inline-flex;align-items:center;gap:10px}
+.seg__lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.seg__row{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:rgba(255,255,255,.4)}
+.seg__btn{height:34px;padding:0 16px;border-radius:999px;font-size:13.5px;font-weight:600;letter-spacing:.02em;color:var(--ink-2);transition:background-color .25s var(--ease),color .25s var(--ease)}
+.seg__btn:hover{color:var(--ink)}
+.seg__btn[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* карточки */
+.pk__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,24px);align-items:stretch}
+.tier{position:relative;display:flex;flex-direction:column;padding:clamp(26px,2.6vw,40px);background:rgba(255,255,255,.55);border:1px solid var(--line)}
+.tier--rec{background:var(--night);color:#fff;border-color:var(--night)}
+.tier__tag{position:absolute;top:0;left:clamp(26px,2.6vw,40px);transform:translateY(-50%);padding:6px 12px;background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.tier__name{font-family:var(--display);font-size:clamp(24px,2.2vw,30px);line-height:1.1}
+.tier__for{margin-top:8px;font-size:14.5px;color:var(--ink-2);min-height:4.8em}
+.tier--rec .tier__for{color:rgba(255,255,255,.62)}
+.tier__sum{margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
+.tier--rec .tier__sum{border-color:var(--line-inv)}
+.tier__from{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.tier--rec .tier__from{color:rgba(255,255,255,.6)}
+.tier__price{display:block;margin-top:4px;font-family:var(--display);font-size:clamp(34px,3.4vw,48px);line-height:1.05;letter-spacing:-.01em;white-space:nowrap}
+.tier__per{margin-top:6px;font-size:14px;color:var(--ink-2)}
+.tier--rec .tier__per{color:rgba(255,255,255,.62)}
+
+.tier__list{margin-top:26px;display:flex;flex-direction:column;flex:1}
+.tier__list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:12px 0;border-top:1px solid var(--line);font-size:14.5px;line-height:1.4}
+.tier--rec .tier__list li{border-color:var(--line-inv)}
+.tier__list li:first-child{border-top:0;padding-top:0}
+.li__n{font-weight:600}
+.li__s{grid-column:1;font-size:13px;color:var(--ink-2)}
+.tier--rec .li__s{color:rgba(255,255,255,.55)}
+.li__p{grid-row:1;grid-column:2;font-size:14px;color:var(--ink-2);white-space:nowrap;text-align:right}
+.tier--rec .li__p{color:rgba(255,255,255,.62)}
+.li--new .li__n::before{content:"+";display:inline-block;margin-right:8px;color:var(--accent);font-weight:700}
+.tier--rec .li--new .li__n::before{color:#e8573f}
+
+.tier__go{margin-top:28px}
+/* кнопки и ссылки — общие из home.css; здесь только то, что нужно карточкам */
+.pk .btn{width:100%}
+.pk .btn--line{border-color:var(--ink)}
+
+/* нижняя строка: условия и материалы за заявку */
+.pk__foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 48px;align-items:center;margin-top:clamp(28px,3.2vw,44px);padding-top:clamp(22px,2.4vw,32px);border-top:1px solid var(--line)}
+.pk__note{font-size:13.5px;line-height:1.6;color:var(--ink-2);max-width:78ch}
+.pk__note b{color:var(--ink);font-weight:600}
+
+@media (max-width:1040px){
+  .pk__head{grid-template-columns:1fr}
+  .pk__ctl{justify-content:flex-start}
+  .pk__grid{grid-template-columns:1fr;max-width:560px}
+  .tier__for{min-height:0}
+  .tier--rec{order:-1}
+}
+@media (max-width:640px){
+  .pk__foot{grid-template-columns:1fr}
+  .seg{flex-wrap:wrap}
+}
+
+/* якорь формы не должен прятаться под закреплённой шапкой */
+#visit{scroll-margin-top:62px}
