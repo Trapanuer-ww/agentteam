@@ -26,7 +26,7 @@
   --line:rgba(20,20,19,.14);
   --line-inv:rgba(255,255,255,.18);
   --accent:#c22a19;            /* красный кнопок f-loft.ru */
-  --accent-2:#a62212;
+  --accent-dark:#861a0d;       /* тот же красный, затемнён — заливка кнопок действия при наведении */
   --accent-on-dark:#e8573f;    /* тот же красный, осветлён для текста на тёмном */
 
   --font:"Mulish","Helvetica Neue",Arial,sans-serif;          /* текст, кнопки, подписи */
@@ -68,12 +68,14 @@ address{font-style:normal}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 28px;
   font-size:14.5px;font-weight:600;letter-spacing:.03em;line-height:1;white-space:nowrap;border-radius:2px;
   transition:background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
-/* Кнопки действия при наведении слегка темнеют. Через filter, а не background: фон (в том числе градиент кнопки первого экрана) не трогаем. */
-.btn--accent{background:var(--accent);color:#fff;transition:filter .25s var(--ease)}
-.btn--accent:hover{filter:brightness(.88)}
+/* Кнопки действия при наведении заметно темнеют. Меняется только цвет заливки (переменная --btn-c),
+   текст остаётся белым, форма и градиент кнопки первого экрана — прежними. */
+@property --btn-c{syntax:"<color>";inherits:false;initial-value:#c22a19}
+.btn--accent{--btn-c:var(--accent);background:var(--btn-c);color:#fff;transition:--btn-c .3s var(--ease)}
+.btn--accent:hover,.btn--accent:active{--btn-c:var(--accent-dark)}
 /* Кнопка первого экрана: красная полоса, плотная под текстом и растворяющаяся вправо */
 .btn--fade{justify-content:flex-start;width:min(100%,720px);min-height:48px;font-weight:600;letter-spacing:.01em;
-  background:linear-gradient(90deg,var(--accent) 0,var(--accent) 30%,rgba(194,42,25,0) 100%) no-repeat}
+  background:linear-gradient(90deg,var(--btn-c) 0,var(--btn-c) 30%,rgba(194,42,25,0) 100%) no-repeat}
 .btn--line{border:1px solid currentColor}
 .btn--line:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .btn--sm{min-height:40px;padding:0 18px;font-size:14px}
