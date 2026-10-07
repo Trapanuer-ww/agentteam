@@ -54,7 +54,7 @@ button,input,textarea{font:inherit;color:inherit}
 button{background:none;border:0;padding:0;cursor:pointer}
 address{font-style:normal}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.hero :focus-visible,.fm :focus-visible,.visit :focus-visible,.ftr :focus-visible,.hdr:not(.is-solid) :focus-visible{outline-color:#fff}
+.hero :focus-visible,.fm :focus-visible,.visit__txt :focus-visible,.ftr :focus-visible,.hdr:not(.is-solid) :focus-visible{outline-color:#fff}
 
 .wrap{width:100%;max-width:calc(var(--wrap) + var(--gut)*2);margin-inline:auto;padding-inline:var(--gut)}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
@@ -180,6 +180,11 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 .shot__img{overflow:hidden;background:var(--paper-2)}
 .shot__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .shot:hover .shot__img img{transform:scale(1.035)}
+/* Место под фото: держит пропорции кадра и подсказывает размер */
+.shot__ph{display:grid;place-content:center;justify-items:center;gap:8px;padding:16px;text-align:center;color:var(--ink-2);
+  background:var(--paper-2);box-shadow:inset 0 0 0 1px var(--line)}
+.shot__ph span{font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.shot__ph small{font-size:12px;opacity:.75}
 .shot figcaption{margin-top:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
 .shot--a{grid-column:1/9;grid-row:1}
 .shot--a .shot__img{aspect-ratio:3/2}
@@ -241,43 +246,21 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 .round:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .round[disabled]{opacity:.35;pointer-events:none}
 
-/* ---------- visit (final CTA) ---------- */
+/* ---------- visit (final CTA) ----------
+   Слева — короткий текст и контакты, справа — форма на светлой карточке. Блок не выше 3/4 экрана. */
 .visit{background:var(--night);color:#fff}
-.visit__in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,88px);align-items:center;padding-block:var(--sec)}
-.visit__lead{margin-top:20px;max-width:27em;font-size:18px;color:rgba(255,255,255,.78)}
+.visit__in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,104px);align-items:center;padding-block:clamp(40px,6.5vh,80px)}
+.eyebrow{margin-bottom:16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.visit .h2{font-size:clamp(27px,3vw,42px)}
+.visit__lead{margin-top:16px;max-width:26em;font-size:17px;color:rgba(255,255,255,.78)}
+.visit__alt{display:grid;gap:6px;margin-top:26px;font-size:16px;color:rgba(255,255,255,.88)}
+.visit__alt a{color:#fff;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:2px;white-space:nowrap}
 
-/* Встроенная форма: тонкие поля на тёмном, одна кнопка; контакты — отдельной строкой под линией */
-.visit__form{margin-top:32px;max-width:540px}
-.visit__form .wpcf7-form{display:grid;gap:14px}
-.visit__fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.visit__form .fld__l{color:rgba(255,255,255,.66)}
-.visit__form .wpcf7-text,.visit__form .wpcf7-tel{width:100%;height:50px;padding:0 14px;font-size:16px;color:#fff;
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.32);border-radius:2px;-webkit-appearance:none;appearance:none;
-  transition:border-color .2s,background-color .2s}
-.visit__form .wpcf7-text::placeholder,.visit__form .wpcf7-tel::placeholder{color:rgba(255,255,255,.4)}
-.visit__form .wpcf7-text:focus,.visit__form .wpcf7-tel:focus{outline:0;border-color:#fff;background:rgba(255,255,255,.07)}
-.visit__form input:-webkit-autofill{-webkit-text-fill-color:#fff;-webkit-box-shadow:0 0 0 100px #1d1d1b inset;caret-color:#fff}
-.visit__form [aria-invalid="true"]{border-color:var(--accent-on-dark)}
-.visit__form .agree label{color:rgba(255,255,255,.66)}
-.visit__form .agree input{accent-color:var(--paper)}
-.visit__form .agree a:hover{color:#fff}
-.visit__form .agree.is-invalid input{outline-color:var(--accent-on-dark)}
-.visit__form .form-err{color:var(--accent-on-dark)}
-.visit__form .wpcf7-submit{justify-self:start;min-width:250px;margin-top:4px;border:0;cursor:pointer;-webkit-appearance:none;appearance:none}
-.visit__ok{padding:22px 24px;border:1px solid var(--line-inv)}
+.visit__form{justify-self:end;width:100%;max-width:470px;padding:clamp(22px,2.3vw,30px);background:var(--paper);color:var(--ink);border-radius:3px}
+.visit__form .wpcf7-form{display:grid;gap:12px}
 .visit__ok[hidden],.visit__form form[hidden]{display:none}
 .visit__ok-t{font-family:var(--display);font-size:24px;line-height:1.2}
-.visit__ok p+p{margin-top:8px;color:rgba(255,255,255,.78)}
-.visit__ok .modal__demo{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)}
-
-.visit__contacts{display:grid;grid-template-columns:auto auto;justify-content:start;gap:10px clamp(32px,5vw,64px);
-  max-width:540px;margin-top:32px;padding-top:22px;border-top:1px solid var(--line-inv)}
-.visit__contacts dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
-.visit__contacts dd{margin-top:4px;font-size:17px;font-weight:600}
-.visit__contacts a{display:inline-block;padding-block:4px;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .3s var(--ease)}
-.visit__contacts a:hover{background-size:100% 1px}
-.visit__img{overflow:hidden;aspect-ratio:4/3;background:#1c1c1a}
-.visit__img img{width:100%;height:100%;object-fit:cover}
+.visit__ok p+p{margin-top:8px;color:var(--ink-2)}
 
 /* ---------- footer ---------- */
 .ftr{background:var(--night);color:rgba(255,255,255,.72);font-size:15px;line-height:1.6}
@@ -317,11 +300,11 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 .fld__l i{font-style:normal;opacity:.75}
 .fld__l i::before{content:"· "}
 .wpcf7-form-control-wrap{display:block}
-.modal .wpcf7-text,.modal .wpcf7-tel,.modal .wpcf7-date{width:100%;height:48px;padding:0 14px;font-size:16px;
+:is(.modal,.visit__form) :is(.wpcf7-text,.wpcf7-tel,.wpcf7-date){width:100%;height:48px;padding:0 14px;font-size:16px;
   background:#fff;border:1px solid var(--line);border-radius:2px;-webkit-appearance:none;appearance:none;transition:border-color .2s}
 .modal .wpcf7-date{min-width:0;text-align:left}
-.modal .wpcf7-text:focus,.modal .wpcf7-tel:focus,.modal .wpcf7-date:focus{outline:0;border-color:var(--ink)}
-.modal [aria-invalid="true"]{border-color:var(--accent)}
+:is(.modal,.visit__form) :is(.wpcf7-text,.wpcf7-tel,.wpcf7-date):focus{outline:0;border-color:var(--ink)}
+:is(.modal,.visit__form) [aria-invalid="true"]{border-color:var(--accent)}
 .modal .wpcf7-textarea[hidden]{display:none}
 
 .agree{display:grid;gap:4px;margin-top:2px}
@@ -335,7 +318,7 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 
 .form-err{font-size:14px;line-height:1.35;color:var(--accent)}
 .form-err[hidden]{display:none}
-.modal .wpcf7-submit{width:100%;border:0;cursor:pointer;-webkit-appearance:none;appearance:none}
+:is(.modal,.visit__form) .wpcf7-submit{width:100%;border:0;cursor:pointer;-webkit-appearance:none;appearance:none}
 
 /* ---------- cookie ---------- */
 .cookie{position:fixed;z-index:60;right:16px;bottom:16px;width:min(430px,calc(100vw - 32px));padding:16px 18px;
@@ -402,8 +385,8 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
   .rv__meta{margin:10px 0 0}
   .rv__sum .more{grid-column:1/-1;justify-self:start;margin-top:12px}
 
-  .visit__in{grid-template-columns:1fr}
-  .visit__img{order:-1;aspect-ratio:16/10}
+  .visit__in{grid-template-columns:1fr;gap:28px;padding-block:44px}
+  .visit__form{justify-self:stretch;max-width:none}
 }
 
 /* mobile */
@@ -442,11 +425,16 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
   .quote{flex-basis:82%;min-height:0}
   .rv__nav{display:none}
 
-  .visit__lead{font-size:17px}
-  .visit__fields{grid-template-columns:1fr}
-  .visit__form .wpcf7-submit{justify-self:stretch;width:100%}
-  .visit__contacts{grid-template-columns:1fr;gap:16px}
-  .visit__contacts a{padding-block:8px}
+  /* На телефоне блок тоже держим в пределах 3/4 экрана: остаются заголовок и форма,
+     телефон и Telegram — сразу ниже, в подвале, и в плавающей панели */
+  .visit__in{gap:18px;padding-block:28px}
+  .visit .eyebrow,.visit__alt{display:none}
+  .visit__lead{margin-top:10px;font-size:16px}
+  .visit__form{padding:16px}
+  .visit__form .wpcf7-form{gap:9px}
+  .visit__form :is(.wpcf7-text,.wpcf7-tel){height:44px}
+  .visit__form .agree{gap:0}
+  .shot__ph small{display:none}
 
   .ftr__top{flex-direction:column;gap:14px}
   .ftr__contacts a,.ftr__nav a,.ftr__bot a{display:inline-block;padding-block:9px}
@@ -474,4 +462,9 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
   .cookie{left:0;right:0;bottom:0;width:auto;padding:12px 16px calc(12px + var(--host-pad) + env(safe-area-inset-bottom,0px));border-width:1px 0 0;
     grid-template-columns:1fr auto;align-items:center;gap:14px;font-size:12px;line-height:1.35}
   .cookie .btn{min-height:44px;padding:0 14px}
+}
+
+/* низкие телефоны: пояснение под заголовком убираем, чтобы блок не вырос выше 3/4 экрана */
+@media (max-width:760px) and (max-height:780px){
+  .visit__lead{display:none}
 }
