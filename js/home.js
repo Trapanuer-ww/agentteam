@@ -53,7 +53,7 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') { setMenu(false); burger.focus(); }
   });
-  window.matchMedia('(min-width: 1181px)').addEventListener('change', function (e) { if (e.matches) setMenu(false); });
+  window.matchMedia('(min-width: 1301px)').addEventListener('change', function (e) { if (e.matches) setMenu(false); });
 
   /* ---------- Попап с формой ----------
      Одна форма (CF7), три входа. Заголовок совпадает с кнопкой, по которой нажали;
@@ -127,24 +127,6 @@
     });
   }
 
-  /* Антиспам-заглушка в стиле плагина сайта: выбрать нужную иконку из трёх */
-  var ICONS = {
-    'ключ':   '<circle cx="7" cy="12" r="3.500"/><path d="M10.500 12H20M17 12v3M14 12v2"/>',
-    'сердце': '<path d="M12 19s-7-4.300-7-9a4 4 0 0 1 7-2.600A4 4 0 0 1 19 10c0 4.700-7 9-7 9z"/>',
-    'звезду': '<path d="M12 4l2.400 5 5.400.700-4 3.800 1 5.400L12 16.300 7.200 18.900l1-5.400-4-3.800 5.400-.700z"/>'
-  };
-  var captchaWord = '';
-  function buildCaptcha() {
-    var keys = Object.keys(ICONS).sort(function () { return Math.random() - .5; });
-    captchaWord = keys[Math.floor(Math.random() * keys.length)];
-    $('#captcha-word').textContent = captchaWord;
-    $('#captcha-opts').innerHTML = keys.map(function (k, i) {
-      return '<label><input type="radio" name="kc_captcha" value="' + (k === captchaWord ? 'kc_human' : 'bot') + '" aria-label="Вариант ' + (i + 1) + '">' +
-        '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">' + ICONS[k] + '</svg></label>';
-    }).join('');
-  }
-  buildCaptcha();
-
   function showError(msg, field) {
     errBox.textContent = msg;
     errBox.hidden = false;
@@ -153,10 +135,8 @@
   function validate() {
     var name = $('[name="your-name"]', form);
     var agree = $$('[data-agree]', form);
-    var human = $('[name="kc_captcha"]:checked', form);
     $$('[aria-invalid]', form).forEach(function (el) { el.removeAttribute('aria-invalid'); });
     $('.agree', form).classList.remove('is-invalid');
-    $('.captcha', form).classList.remove('is-invalid');
     errBox.hidden = true;
 
     if (name.value.trim().length < 2) { name.setAttribute('aria-invalid', 'true'); showError('Напишите, как к вам обращаться.', name); return false; }
@@ -166,20 +146,20 @@
       showError('Отметьте оба согласия — без них мы не можем принять заявку.', agree.filter(function (c) { return !c.checked; })[0]);
       return false;
     }
-    if (!human || human.value !== 'kc_human') {
-      $('.captcha', form).classList.add('is-invalid');
-      showError('Выберите картинку: ' + captchaWord + '.', $('[name="kc_captcha"]', form));
-      return false;
-    }
     return true;
   }
+  /* Как только человек начал исправлять поле — убираем сообщение об ошибке и красную рамку */
+  form.addEventListener('input', function (e) {
+    errBox.hidden = true;
+    if (e.target.removeAttribute) e.target.removeAttribute('aria-invalid');
+    $('.agree', form).classList.remove('is-invalid');
+  });
   function showSuccess() {
     formBox.hidden = true;
     okBox.hidden = false;
     var h = $('.modal__title', okBox);
     if (h) h.focus();
     form.reset();
-    buildCaptcha();
   }
 
   if (form.hasAttribute('data-demo')) {
