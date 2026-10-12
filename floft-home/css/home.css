@@ -193,7 +193,6 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 .bento__i--c{grid-column:10/13;grid-row:1}
 .bento__i--d{grid-column:7/11;grid-row:2}
 .bento__i--e{grid-column:11/13;grid-row:2}
-.bento__i--c img{object-position:50% 20%}
 
 /* ---------- formats + capacity ---------- */
 .fm{padding-block:var(--sec);background:var(--night);color:#fff}
