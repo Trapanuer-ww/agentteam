@@ -173,12 +173,12 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 
 /* ---------- offer on the first screen: корпоратив в будни ----------
    Лежит прямо на фоне первого экрана, без своей подложки и без добавленного затемнения (как оффер на goldapple.ru).
-   Шрифты, цвет текста и кнопка — те же, что у заголовка и кнопки первого экрана; нежно-красный (коралл #ffa391, светлее --accent-on-dark, чтобы не сливаться с красной шторой в кадре) только у цифры «−50%».
+   Шрифты, цвет текста и кнопка — те же, что у заголовка и кнопки первого экрана; тот же красный, что у кнопки «Записаться на просмотр» (--accent), только у цифры «−50%».
    Блок стоит в нижней части кадра, где фон и так затемнён градиентом первого экрана. */
 .hero__in{position:relative}
 .hof{position:absolute;right:var(--gut);bottom:clamp(40px,6.5vh,72px);width:min(400px,33vw);color:#fff;scroll-margin-top:var(--hdr-h);text-shadow:0 1px 22px rgba(12,12,11,.4)}
 .hof__big{line-height:1}
-.hof__num{display:block;color:#ffa391;text-shadow:0 2px 28px rgba(12,12,11,.6);font-family:var(--display);font-size:clamp(56px,5vw,76px);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.hof__num{display:block;color:var(--accent);text-shadow:0 0 28px rgba(255,255,255,.18);font-family:var(--display);font-size:clamp(56px,5vw,76px);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .hof__unit{display:block;margin-top:12px;font-family:var(--display);font-size:clamp(18px,1.45vw,22px);line-height:1.15;white-space:nowrap}
 .hof__cond{margin-top:14px;font-size:clamp(15px,1.35vw,17px);line-height:1.45;color:rgba(255,255,255,.84)}
 .hof__cond span{display:block}
