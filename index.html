@@ -26,7 +26,7 @@
       imagesrcset="assets/img/hero-m-600.avif 600w, assets/img/hero-m-900.avif 900w" imagesizes="100vw" media="(max-width: 700px)">
 <link rel="preload" as="image" type="image/avif" fetchpriority="high"
       imagesrcset="assets/img/hero-1280.avif 1280w, assets/img/hero-1920.avif 1920w" imagesizes="100vw" media="(min-width: 701px)">
-<link rel="stylesheet" href="css/home.css?v=1012c">
+<link rel="stylesheet" href="css/home.css?v=1015d">
 <script>document.documentElement.classList.add('js')</script>
 
 <script type="application/ld+json">
@@ -148,19 +148,42 @@
   </div>
 </section>
 
+<!-- ============================ ОФФЕР: КОРПОРАТИВ В БУДНИ ============================
+     Тест-гипотеза (2026-10-15), условия НЕ утверждены Marketing Lead: даты, размер скидки на повторное мероприятие и «N дат»
+     уточнить до публикации на f-loft.ru. Выглядывает из-под первого экрана вместо УТП. Кнопка открывает ту же форму (intent="offer"). -->
+<section class="of" id="weekday" aria-labelledby="of-title">
+  <div class="wrap of__in">
+    <div class="of__head">
+      <h2 class="of__title" id="of-title">Корпоратив в будни — аренда вполцены</h2>
+      <p class="of__sub">Понедельник, вторник и среда в декабре и январе. Условие: банкет или фуршет от партнёра площадки 3F‑catering.</p>
+      <button class="btn btn--line of__cta" type="button" data-open-form data-intent="offer">Проверить свободные даты</button>
+    </div>
+    <ul class="of__list">
+      <li>
+        <p class="of__key"><em>−50%</em> на аренду</p>
+        <p class="of__txt">Для корпоративных мероприятий с кейтерингом. Площадка та же, будний день вместо пятницы и субботы.</p>
+      </li>
+      <li>
+        <p class="of__key">−20% на повторное мероприятие</p>
+        <p class="of__txt">Скидка на аренду, если бронируете второй корпоратив в будни. На какие даты она действует, назовёт менеджер.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- ============================ УТП ============================ -->
 <section class="usp" aria-label="Коротко о площадке">
   <div class="wrap">
     <ul class="usp__list">
-      <li>
+      <li data-rv>
         <p class="usp__key">до <em>300</em> гостей</p>
         <p class="usp__txt">Конференции и фуршеты — до 300 гостей, банкеты — до 200. Два уровня, потолки до 5,4 м.</p>
       </li>
-      <li>
+      <li data-rv>
         <p class="usp__key"><em>5 минут</em> от метро</p>
         <p class="usp__txt">м. Бауманская, Спартаковская площадь, 16/15, стр. 6. Закрытая территория, платная парковка по записи.</p>
       </li>
-      <li>
+      <li data-rv>
         <p class="usp__key">Сцена и <em>LED‑экран</em></p>
         <p class="usp__txt">Техника площадки подключается отдельным комплектом: состав и стоимость пришлём с расчётом. Кейтеринг — партнёр площадки 3F-catering.</p>
       </li>
@@ -478,6 +501,6 @@
   <button class="btn btn--line btn--sm" type="button" id="cookie-ok">Подтверждаю</button>
 </div>
 
-<script src="js/home.js?v=1012c" defer></script>
+<script src="js/home.js?v=1015d" defer></script>
 </body>
 </html>
