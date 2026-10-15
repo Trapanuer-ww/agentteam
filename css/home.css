@@ -161,8 +161,7 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
   background:
     linear-gradient(180deg,rgba(12,12,11,.5) 0%,rgba(12,12,11,0) 22%),
     linear-gradient(0deg,rgba(12,12,11,.88) 0%,rgba(12,12,11,.5) 38%,rgba(12,12,11,.12) 72%,rgba(12,12,11,.06) 100%),
-    linear-gradient(90deg,rgba(12,12,11,.46) 0%,rgba(12,12,11,0) 60%),
-    linear-gradient(270deg,rgba(12,12,11,.66) 0%,rgba(12,12,11,.3) 30%,rgba(12,12,11,0) 52%)}
+    linear-gradient(90deg,rgba(12,12,11,.46) 0%,rgba(12,12,11,0) 60%)}
 .hero__in{padding-block:calc(var(--hdr-h) + 40px) clamp(40px,6.5vh,72px)}
 
 .hero__title{max-width:15em;font-family:var(--display);font-weight:400;font-size:clamp(38px,4.7vw,72px);line-height:1.06;letter-spacing:-.008em}
@@ -173,21 +172,22 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 
 
 /* ---------- offer on the first screen: корпоратив в будни ----------
-   Без плашки: крупная цифра, одна строка условий и плоская кнопка с разрядкой — как баннер-оффер на goldapple.ru.
-   Справа в кадре затемнение, чтобы белый текст читался; красный здесь не используется — он только у кнопки «Записаться на просмотр». */
+   Лежит прямо на фоне первого экрана, без своей подложки и без добавленного затемнения (как оффер на goldapple.ru).
+   Шрифты, цвет текста и кнопка — те же, что у заголовка и кнопки первого экрана; красного в оффере нет.
+   Блок стоит в нижней части кадра, где фон и так затемнён градиентом первого экрана. */
 .hero__in{position:relative}
-.hof{position:absolute;right:var(--gut);bottom:clamp(40px,6.5vh,72px);width:min(400px,33vw);color:#fff;scroll-margin-top:var(--hdr-h)}
+.hof{position:absolute;right:var(--gut);bottom:clamp(40px,6.5vh,72px);width:min(400px,33vw);color:#fff;scroll-margin-top:var(--hdr-h);text-shadow:0 1px 22px rgba(12,12,11,.4)}
 .hof__big{line-height:1}
-.hof__num{display:block;font-family:var(--display);font-size:clamp(60px,5.4vw,84px);letter-spacing:-.025em;font-variant-numeric:tabular-nums}
-.hof__unit{display:block;margin-top:14px;font-family:var(--display);font-size:clamp(22px,1.9vw,29px);line-height:1.15;text-wrap:balance}
-.hof__cond{margin-top:16px;font-size:15.5px;line-height:1.5;color:rgba(255,255,255,.84)}
+.hof__num{display:block;text-shadow:0 2px 30px rgba(12,12,11,.55);font-family:var(--display);font-size:clamp(56px,5vw,76px);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.hof__unit{display:block;margin-top:12px;font-family:var(--display);font-size:clamp(18px,1.45vw,22px);line-height:1.15;white-space:nowrap}
+.hof__cond{margin-top:14px;font-size:clamp(15px,1.35vw,17px);line-height:1.45;color:rgba(255,255,255,.84)}
 .hof__cond span{display:block}
 .hof .hof__m{display:none}
-.hof__more{margin-top:14px;padding-top:14px;border-top:1px solid var(--line-inv);font-size:15.5px;line-height:1.4;color:rgba(255,255,255,.84)}
-.hof__more b{font-family:var(--display);font-weight:400;font-size:22px;margin-right:6px;color:#fff}
-.hof__cta{margin-top:24px;min-height:50px;padding:0 22px;gap:18px;justify-content:space-between;border-radius:0;background:#fff;color:var(--ink);
-  font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:background-color .25s var(--ease)}
-.hof__cta:hover{background:var(--paper-2)}
+.hof__more{margin-top:6px;font-size:clamp(15px,1.35vw,17px);line-height:1.45;color:rgba(255,255,255,.84)}
+.hof__more b{font-weight:600;color:#fff}
+.hof__cta{width:100%;margin-top:22px;min-height:48px;padding:0 22px;justify-content:space-between;
+  border:1px solid rgba(255,255,255,.7);background:transparent;color:#fff;text-shadow:none;font-size:14.5px;font-weight:600;letter-spacing:.01em}
+.hof__cta:hover{background:rgba(255,255,255,.14);border-color:#fff}
 .hof__cta:hover .arr{transform:translateX(5px)}
 
 /* ---------- usp ---------- */
@@ -391,12 +391,12 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 
 /* tablet и ниже */
 @media (max-width:920px){
-  .hof{position:static;width:auto;max-width:460px;margin-top:20px;padding-top:14px;border-top:1px solid var(--line-inv);display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+  .hof{position:static;width:auto;max-width:460px;margin-top:20px;padding-top:14px;border-top:1px solid var(--line-inv);text-shadow:none;display:grid;grid-template-columns:auto minmax(0,1fr) auto;
     grid-template-areas:"num unit cta" "num cond cta";column-gap:16px;row-gap:3px;align-items:center}
   .hof__more,.hof .hof__d,.hof .hof__c{display:none}
   .hof__big{display:contents}
   .hof__num{grid-area:num;font-size:46px}
-  .hof__unit{grid-area:unit;margin:0;font-size:16px;line-height:1.2;align-self:end}
+  .hof__unit{grid-area:unit;white-space:normal;margin:0;font-size:16px;line-height:1.2;align-self:end}
   .hof__cond{grid-area:cond;margin:0;font-size:13px;line-height:1.35;align-self:start}
   .hof .hof__m{display:block}
   .hof__cta{grid-area:cta;width:44px;height:44px;min-height:0;margin:0;padding:0;border-radius:50%;justify-content:center;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
