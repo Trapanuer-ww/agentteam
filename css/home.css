@@ -161,7 +161,8 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
   background:
     linear-gradient(180deg,rgba(12,12,11,.5) 0%,rgba(12,12,11,0) 22%),
     linear-gradient(0deg,rgba(12,12,11,.88) 0%,rgba(12,12,11,.5) 38%,rgba(12,12,11,.12) 72%,rgba(12,12,11,.06) 100%),
-    linear-gradient(90deg,rgba(12,12,11,.46) 0%,rgba(12,12,11,0) 60%)}
+    linear-gradient(90deg,rgba(12,12,11,.46) 0%,rgba(12,12,11,0) 60%),
+    linear-gradient(270deg,rgba(12,12,11,.66) 0%,rgba(12,12,11,.3) 30%,rgba(12,12,11,0) 52%)}
 .hero__in{padding-block:calc(var(--hdr-h) + 40px) clamp(40px,6.5vh,72px)}
 
 .hero__title{max-width:15em;font-family:var(--display);font-weight:400;font-size:clamp(38px,4.7vw,72px);line-height:1.06;letter-spacing:-.008em}
@@ -171,22 +172,22 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 .hero__cta{display:flex;align-items:center;flex-wrap:wrap;gap:16px 28px;margin-top:clamp(28px,3.2vw,40px)}
 
 
-/* ---------- offer card on the first screen: корпоратив в будни ----------
-   Светлая карточка справа от заголовка: текст на ней, а не поверх фото. Красный — только у «−50%». */
+/* ---------- offer on the first screen: корпоратив в будни ----------
+   Без плашки: крупная цифра, одна строка условий и плоская кнопка с разрядкой — как баннер-оффер на goldapple.ru.
+   Справа в кадре затемнение, чтобы белый текст читался; красный здесь не используется — он только у кнопки «Записаться на просмотр». */
 .hero__in{position:relative}
-.hof{position:absolute;right:var(--gut);bottom:clamp(40px,6.5vh,72px);width:min(384px,32vw);padding:26px 30px 24px;
-  background:var(--paper);color:var(--ink);border-radius:2px;box-shadow:0 34px 80px -30px rgba(0,0,0,.7);scroll-margin-top:var(--hdr-h)}
-.hero .hof :focus-visible{outline-color:var(--accent)}
-.hof__tag{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
-.hof__big{margin-top:10px;line-height:1}
-.hof__num{display:block;font-family:var(--display);font-size:clamp(64px,6vw,90px);letter-spacing:-.02em;color:var(--accent);font-variant-numeric:tabular-nums}
-.hof__unit{display:block;margin-top:10px;font-family:var(--display);font-size:clamp(20px,1.6vw,25px);line-height:1.1}
-.hof__u2,.hof .hof__m{display:none}
-.hof__cond{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--ink-2)}
+.hof{position:absolute;right:var(--gut);bottom:clamp(40px,6.5vh,72px);width:min(400px,33vw);color:#fff;scroll-margin-top:var(--hdr-h)}
+.hof__big{line-height:1}
+.hof__num{display:block;font-family:var(--display);font-size:clamp(60px,5.4vw,84px);letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.hof__unit{display:block;margin-top:14px;font-family:var(--display);font-size:clamp(22px,1.9vw,29px);line-height:1.15;text-wrap:balance}
+.hof__cond{margin-top:16px;font-size:15.5px;line-height:1.5;color:rgba(255,255,255,.84)}
 .hof__cond span{display:block}
-.hof__more{margin-top:14px;font-size:15px;line-height:1.4}
-.hof__more b{font-family:var(--display);font-weight:400;font-size:24px;margin-right:4px}
-.hof__cta{width:100%;margin-top:20px;justify-content:space-between;color:var(--ink)}
+.hof .hof__m{display:none}
+.hof__more{margin-top:14px;padding-top:14px;border-top:1px solid var(--line-inv);font-size:15.5px;line-height:1.4;color:rgba(255,255,255,.84)}
+.hof__more b{font-family:var(--display);font-weight:400;font-size:22px;margin-right:6px;color:#fff}
+.hof__cta{margin-top:24px;min-height:50px;padding:0 22px;gap:18px;justify-content:space-between;border-radius:0;background:#fff;color:var(--ink);
+  font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:background-color .25s var(--ease)}
+.hof__cta:hover{background:var(--paper-2)}
 .hof__cta:hover .arr{transform:translateX(5px)}
 
 /* ---------- usp ---------- */
@@ -390,16 +391,16 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 
 /* tablet и ниже */
 @media (max-width:920px){
-  .hof{position:static;width:auto;margin-top:20px;padding:14px 14px 14px 18px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;
-    grid-template-areas:"num unit cta" "num cond cta";column-gap:16px;row-gap:3px;align-items:center;max-width:460px}
-  .hof__tag,.hof__more,.hof .hof__d,.hof .hof__c{display:none}
+  .hof{position:static;width:auto;max-width:460px;margin-top:20px;padding-top:14px;border-top:1px solid var(--line-inv);display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+    grid-template-areas:"num unit cta" "num cond cta";column-gap:16px;row-gap:3px;align-items:center}
+  .hof__more,.hof .hof__d,.hof .hof__c{display:none}
   .hof__big{display:contents}
   .hof__num{grid-area:num;font-size:46px}
-  .hof__unit{grid-area:unit;font-size:16px;line-height:1.2;align-self:end}
-  .hof__u2{display:inline}
-  .hof__cond{grid-area:cond;margin:0;padding:0;border:0;font-size:13px;line-height:1.35;align-self:start}
+  .hof__unit{grid-area:unit;margin:0;font-size:16px;line-height:1.2;align-self:end}
+  .hof__cond{grid-area:cond;margin:0;font-size:13px;line-height:1.35;align-self:start}
   .hof .hof__m{display:block}
-  .hof__cta{grid-area:cta;width:44px;height:44px;min-height:0;margin:0;padding:0;border-radius:50%;justify-content:center}
+  .hof__cta{grid-area:cta;width:44px;height:44px;min-height:0;margin:0;padding:0;border-radius:50%;justify-content:center;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
+  .hof__cta:hover{background:rgba(255,255,255,.14)}
   .hof__ct{display:none}
 
   .usp__list{grid-template-columns:1fr;gap:0}
