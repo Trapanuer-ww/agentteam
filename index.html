@@ -26,7 +26,7 @@
       imagesrcset="assets/img/hero-m-600.avif 600w, assets/img/hero-m-900.avif 900w" imagesizes="100vw" media="(max-width: 700px)">
 <link rel="preload" as="image" type="image/avif" fetchpriority="high"
       imagesrcset="assets/img/hero-1280.avif 1280w, assets/img/hero-1920.avif 1920w" imagesizes="100vw" media="(min-width: 701px)">
-<link rel="stylesheet" href="css/home.css?v=1015d">
+<link rel="stylesheet" href="css/home.css?v=1015h">
 <script>document.documentElement.classList.add('js')</script>
 
 <script type="application/ld+json">
@@ -142,32 +142,22 @@
     <h1 class="hero__title" id="hero-title">Лофт для мероприятий <span>в 5 минутах</span> <span>от Бауманской</span></h1>
     <p class="hero__sub">Конференции, корпоративы, банкеты и фуршеты.</p>
 
+    <!-- Оффер «Корпоратив в будни» (тест-гипотеза 2026-10-15). Условия НЕ утверждены Marketing Lead: даты пн–ср, «N дат» для повторного мероприятия
+         и текст условий уточнить до переноса на f-loft.ru. Кнопка открывает ту же форму (data-intent="offer"). -->
+    <aside class="hof" id="weekday" aria-label="Предложение для корпоративов">
+      <p class="hof__tag">Корпоративам в будни</p>
+      <p class="hof__big"><span class="hof__num" data-count="50">−50%</span><span class="hof__unit">на аренду<span class="hof__u2"> корпоративов в будни</span></span></p>
+      <p class="hof__cond"><span class="hof__d">Пн, вт и ср · декабрь и январь</span><span class="hof__c">При заказе банкета или фуршета от 3F&#8209;catering</span><span class="hof__m">Пн–ср · дек–янв · с кейтерингом</span></p>
+      <p class="hof__more"><b>−20%</b> на аренду повторного мероприятия</p>
+      <button class="btn btn--line hof__cta" type="button" data-open-form data-intent="offer" aria-label="Проверить свободные даты">
+        <span class="hof__ct">Проверить свободные даты</span>
+        <svg class="arr" viewBox="0 0 18 10" width="18" height="10" aria-hidden="true"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+      </button>
+    </aside>
+
     <div class="hero__cta">
       <button class="btn btn--accent btn--fade" type="button" data-open-form data-intent="viewing" id="hero-cta">Записаться на просмотр</button>
     </div>
-  </div>
-</section>
-
-<!-- ============================ ОФФЕР: КОРПОРАТИВ В БУДНИ ============================
-     Тест-гипотеза (2026-10-15), условия НЕ утверждены Marketing Lead: даты, размер скидки на повторное мероприятие и «N дат»
-     уточнить до публикации на f-loft.ru. Выглядывает из-под первого экрана вместо УТП. Кнопка открывает ту же форму (intent="offer"). -->
-<section class="of" id="weekday" aria-labelledby="of-title">
-  <div class="wrap of__in">
-    <div class="of__head">
-      <h2 class="of__title" id="of-title">Корпоратив в будни — аренда вполцены</h2>
-      <p class="of__sub">Понедельник, вторник и среда в декабре и январе. Условие: банкет или фуршет от партнёра площадки 3F‑catering.</p>
-      <button class="btn btn--line of__cta" type="button" data-open-form data-intent="offer">Проверить свободные даты</button>
-    </div>
-    <ul class="of__list">
-      <li>
-        <p class="of__key"><em>−50%</em> на аренду</p>
-        <p class="of__txt">Для корпоративных мероприятий с кейтерингом. Площадка та же, будний день вместо пятницы и субботы.</p>
-      </li>
-      <li>
-        <p class="of__key">−20% на повторное мероприятие</p>
-        <p class="of__txt">Скидка на аренду, если бронируете второй корпоратив в будни. На какие даты она действует, назовёт менеджер.</p>
-      </li>
-    </ul>
   </div>
 </section>
 
@@ -175,15 +165,15 @@
 <section class="usp" aria-label="Коротко о площадке">
   <div class="wrap">
     <ul class="usp__list">
-      <li data-rv>
+      <li>
         <p class="usp__key">до <em>300</em> гостей</p>
         <p class="usp__txt">Конференции и фуршеты — до 300 гостей, банкеты — до 200. Два уровня, потолки до 5,4 м.</p>
       </li>
-      <li data-rv>
+      <li>
         <p class="usp__key"><em>5 минут</em> от метро</p>
         <p class="usp__txt">м. Бауманская, Спартаковская площадь, 16/15, стр. 6. Закрытая территория, платная парковка по записи.</p>
       </li>
-      <li data-rv>
+      <li>
         <p class="usp__key">Сцена и <em>LED‑экран</em></p>
         <p class="usp__txt">Техника площадки подключается отдельным комплектом: состав и стоимость пришлём с расчётом. Кейтеринг — партнёр площадки 3F-catering.</p>
       </li>
@@ -501,6 +491,6 @@
   <button class="btn btn--line btn--sm" type="button" id="cookie-ok">Подтверждаю</button>
 </div>
 
-<script src="js/home.js?v=1015d" defer></script>
+<script src="js/home.js?v=1015h" defer></script>
 </body>
 </html>

@@ -170,21 +170,24 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 
 .hero__cta{display:flex;align-items:center;flex-wrap:wrap;gap:16px 28px;margin-top:clamp(28px,3.2vw,40px)}
 
-/* ---------- offer: корпоратив в будни ----------
-   Первый блок под первым экраном: из-под него выглядывает заголовок. Красный только у «−50%» (один акцент). */
-.of{padding-block:clamp(28px,2.8vw,40px) 0}
-.of{scroll-margin-top:var(--hdr-h)}
-.of__in{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,5vw,80px);align-items:start;
-  padding-top:22px;border-top:1px solid var(--ink)}
-.of__title{font-family:var(--display);font-weight:400;font-size:clamp(27px,2.7vw,39px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance}
-.of__sub{margin-top:14px;max-width:26em;font-size:16px;color:var(--ink-2)}
-.of__cta{margin-top:22px}
-.of__list{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
-.of__key{font-family:var(--display);font-size:clamp(22px,2vw,29px);line-height:1.15}
-.of__key em{font-style:normal;color:var(--accent)}
-.of__list li{padding-top:2px}
-.of__txt{margin-top:12px;font-size:16px;color:var(--ink-2)}
-.of+.usp{padding-top:clamp(56px,6vw,88px)}
+
+/* ---------- offer card on the first screen: корпоратив в будни ----------
+   Светлая карточка справа от заголовка: текст на ней, а не поверх фото. Красный — только у «−50%». */
+.hero__in{position:relative}
+.hof{position:absolute;right:var(--gut);bottom:clamp(40px,6.5vh,72px);width:min(384px,32vw);padding:26px 30px 24px;
+  background:var(--paper);color:var(--ink);border-radius:2px;box-shadow:0 34px 80px -30px rgba(0,0,0,.7);scroll-margin-top:var(--hdr-h)}
+.hero .hof :focus-visible{outline-color:var(--accent)}
+.hof__tag{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.hof__big{margin-top:10px;line-height:1}
+.hof__num{display:block;font-family:var(--display);font-size:clamp(64px,6vw,90px);letter-spacing:-.02em;color:var(--accent);font-variant-numeric:tabular-nums}
+.hof__unit{display:block;margin-top:10px;font-family:var(--display);font-size:clamp(20px,1.6vw,25px);line-height:1.1}
+.hof__u2,.hof .hof__m{display:none}
+.hof__cond{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--ink-2)}
+.hof__cond span{display:block}
+.hof__more{margin-top:14px;font-size:15px;line-height:1.4}
+.hof__more b{font-family:var(--display);font-weight:400;font-size:24px;margin-right:4px}
+.hof__cta{width:100%;margin-top:20px;justify-content:space-between;color:var(--ink)}
+.hof__cta:hover .arr{transform:translateX(5px)}
 
 /* ---------- usp ---------- */
 .usp{padding-block:clamp(28px,2.8vw,40px) 0}
@@ -347,7 +350,7 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @keyframes hero-zoom{from{transform:scale(1.06)}to{transform:none}}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@keyframes draw{from{transform:scaleX(0)}to{transform:none}}
+@keyframes hof-in{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
 
 @media (prefers-reduced-motion:no-preference){
   .hero__bg img{animation:hero-zoom 2.2s var(--ease) both}
@@ -355,17 +358,10 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
   .hero__sub{animation-delay:.08s}
   .js [data-rv]{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
   .js [data-rv].is-in{opacity:1;transform:none}
-  /* Оффер виден на первом экране (выглядывает из-под hero): линия прорисовывается, затем строки поднимаются по очереди */
-  .of__in::before{content:"";position:absolute;left:var(--gut);right:var(--gut);top:0;height:1px;background:var(--ink);
-    transform-origin:0 50%;animation:draw 1.1s var(--ease) .25s both}
-  .of__in{border-top-color:transparent}
-  .of__title{animation:rise .9s var(--ease) .35s both}
-  .of__sub{animation:rise .9s var(--ease) .45s both}
-  .of__cta{animation:rise .9s var(--ease) .55s both}
-  .of__list li{animation:rise .9s var(--ease) .5s both}
-  .of__list li+li{animation-delay:.62s}
-  .usp__list li:nth-child(2){transition-delay:.08s}
-  .usp__list li:nth-child(3){transition-delay:.16s}
+  .hof{animation:hof-in 1.1s var(--ease) .7s both}
+  .usp__list li{animation:rise .9s var(--ease) .3s both}          /* видны на первом экране — появляются вместе с ним */
+  .usp__list li:nth-child(2){animation-delay:.38s}
+  .usp__list li:nth-child(3){animation-delay:.46s}
   .cap li:nth-child(2){transition-delay:.08s}
   .cap li:nth-child(3){transition-delay:.16s}
 }
@@ -394,13 +390,18 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 
 /* tablet и ниже */
 @media (max-width:920px){
+  .hof{position:static;width:auto;margin-top:20px;padding:14px 14px 14px 18px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+    grid-template-areas:"num unit cta" "num cond cta";column-gap:16px;row-gap:3px;align-items:center;max-width:460px}
+  .hof__tag,.hof__more,.hof .hof__d,.hof .hof__c{display:none}
+  .hof__big{display:contents}
+  .hof__num{grid-area:num;font-size:46px}
+  .hof__unit{grid-area:unit;font-size:16px;line-height:1.2;align-self:end}
+  .hof__u2{display:inline}
+  .hof__cond{grid-area:cond;margin:0;padding:0;border:0;font-size:13px;line-height:1.35;align-self:start}
+  .hof .hof__m{display:block}
+  .hof__cta{grid-area:cta;width:44px;height:44px;min-height:0;margin:0;padding:0;border-radius:50%;justify-content:center}
+  .hof__ct{display:none}
 
-  .of{padding-top:22px}
-  .of__in{grid-template-columns:1fr;gap:20px}
-  .of__list{grid-template-columns:1fr;gap:0}
-  .of__list li{padding-block:16px;border-top:1px solid var(--line)}
-  .of__sub{max-width:34em}
-  .of+.usp{padding-top:36px}
   .usp__list{grid-template-columns:1fr;gap:0}
   .usp{padding-top:22px}
   .usp__list li{padding-block:18px 26px}
@@ -497,8 +498,6 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 
 /* низкие телефоны: пояснение под заголовком убираем, чтобы блок не вырос выше 3/4 экрана */
 @media (max-width:760px) and (max-height:780px){
-  .of__txt{display:none}                       /* блок «Корпоратив в будни» не выше 3/4 экрана: условия остались в пояснении под заголовком */
-  .of__list li{padding-block:12px}
   .visit__lead{display:none}
 }
 

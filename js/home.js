@@ -282,4 +282,19 @@
     mo.observe(document.documentElement, { childList: true, subtree: true });
     setTimeout(function () { mo.disconnect(); }, 8000);
   }
+
+  /* Цифра скидки на первом экране «добегает» до значения после появления карточки; без JS и при reduced-motion остаётся как в разметке */
+  (function () {
+    var el = $('[data-count]');
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var to = parseInt(el.getAttribute('data-count'), 10), sign = el.textContent.charAt(0) === '−' ? '−' : '', t0 = null;
+    el.textContent = sign + '0%';
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / 1100), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = sign + Math.round(to * e) + '%';
+      if (k < 1) requestAnimationFrame(step);
+    }
+    setTimeout(function () { requestAnimationFrame(step); }, 800);
+  })();
 })();
