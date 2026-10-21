@@ -122,6 +122,7 @@
      onSuccess вызывается и в прототипе, и на сайте — по штатному событию Contact Form 7 (wpcf7mailsent);
      цели Метрики (cf7_success и автоцель формы) продолжают срабатывать как раньше. */
   function bindForm(form, errBox, onSuccess) {
+    if (!form || !$('[name="your-phone"]', form)) return;   // f-loft.ru: вместо CF7 стоит CRM-форма Битрикс24 — у неё своя проверка и экран «отправлено»
     var phone = $('[name="your-phone"]', form);
     var agreeBox = $('.agree', form);
 
@@ -142,7 +143,7 @@
     }
     function validate() {
       var name = $('[name="your-name"]', form);
-      var agree = $$('[data-agree]', form);
+      var agree = $$('[data-agree], .wpcf7-acceptance input', form);   // f-loft.ru: у CF7 свои чекбоксы, без data-agree
       $$('[aria-invalid]', form).forEach(function (el) { el.removeAttribute('aria-invalid'); });
       agreeBox.classList.remove('is-invalid');
       errBox.hidden = true;
@@ -171,6 +172,13 @@
         if ($('[name="kc_honeypot"]', form).value) return;
         if (validate()) done();
       });
+    }
+    else {
+      /* f-loft.ru: та же проверка перед отправкой через Contact Form 7. Слушатель на document в фазе захвата
+         срабатывает раньше обработчика CF7 на форме и останавливает отправку, если поля не заполнены. */
+      document.addEventListener('submit', function (e) {
+        if (e.target === form && !validate()) { e.preventDefault(); e.stopImmediatePropagation(); }
+      }, true);
     }
     document.addEventListener('wpcf7mailsent', function (e) {
       if (e.target === form || form.contains(e.target) || (e.target.contains && e.target.contains(form))) done();
@@ -298,4 +306,19 @@
     }
     setTimeout(function () { requestAnimationFrame(step); }, 800);
   })();
+})();
+
+/* ---------- секция «Площадка в 3D»: Three.js и сцена грузятся, когда секция близко к экрану ---------- */
+(function () {
+  var sec = document.getElementById('tour3d'); if (!sec) return;
+  var started = false;
+  var base = /(^|\.)f-loft\.ru$/.test(location.hostname) ? 'https://f-loft.ru/wp-content/mu-plugins/floft-home/' : '';   // на сайте файлы лежат в mu-plugins
+  function load(src, cb) { var s = document.createElement('script'); s.src = src; s.onload = cb; s.onerror = function () { var f = document.getElementById('fallback'), l = document.getElementById('loading'); if (f) f.hidden = false; if (l) l.hidden = true; }; document.head.appendChild(s); }
+  function start() {
+    if (started) return; started = true;
+    load('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', function () {
+      load('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js', function () { load(base + 'js/hall3d.js?v=1022a'); });
+    });
+  }
+  if ('IntersectionObserver' in window) { var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { io.disconnect(); start(); } }, { rootMargin: '700px 0px' }); io.observe(sec); } else start();
 })();

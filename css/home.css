@@ -126,7 +126,8 @@ address{font-style:normal}
 .sub__all{margin-top:6px;padding-top:6px;border-top:1px solid var(--line)}
 .sub__all a{font-size:14px;color:var(--ink-2)}
 
-.hdr__phone{justify-self:end;grid-column:3}
+.hdr__contacts{justify-self:end;grid-column:3;display:flex;align-items:center;gap:8px}
+.hdr__phone,.hdr__mail{justify-self:end}
 .hdr__call,.burger{display:none}
 
 /* ---------- mobile nav ---------- */
@@ -196,45 +197,93 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 .usp__key em{font-style:normal;color:var(--accent)}
 .usp__txt{margin-top:14px;max-width:26em;font-size:16px;color:var(--ink-2)}
 
-/* ---------- стоимость: что входит и сколько стоит (блок не выше 3/4 экрана) ---------- */
-.incl{padding-block:clamp(26px,4.6vh,54px);background:var(--paper-2)}
-.incl__head{margin-bottom:clamp(12px,2.2vh,24px)}
-.incl .h2{font-size:clamp(24px,2.6vw,38px)}
-.incl__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px)}
-.incl__h{padding-top:14px;border-top:1px solid var(--ink);font-family:var(--display);font-weight:400;font-size:clamp(20px,1.8vw,26px);line-height:1.15}
-.incl__sub{margin-top:4px;font-size:13px;line-height:1.4;color:var(--ink-2)}
-.pr{margin-top:8px}
-.pr div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:6px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.3}
-.pr dd{flex:none;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
-.incl__note{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-2)}
-.incl__in{margin-top:10px;font-size:14.5px;line-height:1.5}
-.incl__cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:clamp(14px,2.4vh,24px)}
-.incl__foot{font-size:14px;color:var(--ink-2)}
-.pr .m-only,.incl__full{display:none}
-.incl__full{font-size:14px;color:var(--ink);background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:2px}
-/* телефон: коротко — главные цены; остальное в полном прайсе */
-@media (max-width:700px){
-  .pr .x,.incl__note.x{display:none}
-  .pr .m-only{display:flex;flex-wrap:wrap}
-  .pr .m-only dd{white-space:normal;text-align:left;font-weight:500;font-size:13px;flex-basis:100%}
-  .incl__full{display:inline-block}
+/* ---------- стоимость: «чек» — один пример-расчёт + что входит (блок не выше 3/4 экрана) ---------- */
+/* ---------- прайс: карточки тарифов (по референсу WE are PADEL и исследованию 20.10) ---------- */
+.pt{padding-block:clamp(44px,7vw,104px);background:var(--paper-2)}
+.pt__eyebrow{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.pt__h{margin-top:clamp(14px,2vw,24px);max-width:22em;font-family:var(--display);font-weight:400;font-size:clamp(30px,3.7vw,54px);line-height:1.06;letter-spacing:-.01em;text-wrap:balance}
+.pt__row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.1vw,16px);margin-top:clamp(24px,3.4vw,48px)}
+.pt__ph{position:relative;margin:0;overflow:hidden;border-radius:22px;background:var(--night);min-height:420px}
+.pt__ph picture,.pt__ph img{position:absolute;inset:0;width:100%;height:100%}
+.pt__ph img{object-fit:cover}
+.pt__card{display:flex;flex-direction:column;padding:clamp(20px,2vw,30px);border-radius:22px;background:#fffdfa;color:var(--ink)}
+.pt__card--brand{background:var(--accent);color:#fff}
+.pt__t{font-family:var(--display);font-weight:400;font-size:clamp(20px,1.85vw,27px);line-height:1.12;letter-spacing:.03em;text-transform:uppercase}
+.pt__sub{margin-top:8px;font-size:14px;line-height:1.4;color:var(--ink-2)}
+.pt__card--brand .pt__sub{color:rgba(255,255,255,.8)}
+.pt__grp{margin-top:clamp(16px,2vw,24px);font-size:15px;font-weight:700}
+.pt__line{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:8px}
+.pt__line span{font-size:14px;color:var(--ink-2)}
+.pt__card--brand .pt__line span{color:rgba(255,255,255,.78)}
+.pt__line b{font-size:clamp(19px,1.7vw,23px);font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pt__line i{margin-right:.35em;font-style:normal;font-size:.62em;font-weight:600;letter-spacing:.04em;opacity:.7}
+.pt__star{margin-top:14px;font-size:13.5px;line-height:1.45;color:rgba(255,255,255,.8)}
+.pt__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:auto;padding-top:clamp(20px,3vw,34px)}
+.pt__foot p{font-size:14px;line-height:1.5;color:var(--ink-2)}
+.pt__card--brand .pt__foot p{color:rgba(255,255,255,.85)}
+.pt__btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:999px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
+  transition:background-color .25s var(--ease),color .25s var(--ease)}
+.pt__btn:hover{background:var(--accent)}
+.pt__card--brand .pt__btn{background:#fff;color:var(--accent)}
+.pt__card--brand .pt__btn:hover{background:var(--ink);color:#fff}
+.pt__btn--solid{background:var(--accent);margin-top:14px;align-self:flex-start}
+.pt__btn--solid:hover{background:var(--accent-dark)}
+.pt__details{display:grid;grid-template-columns:1.1fr 1.1fr 1fr;gap:clamp(20px,3vw,48px);margin-top:clamp(28px,4vw,56px);padding-top:clamp(22px,2.6vw,34px);border-top:1px solid var(--line);scroll-margin-top:calc(var(--hdr-h) + 16px)}
+.pt__col h3{font-family:var(--display);font-weight:400;font-size:clamp(19px,1.6vw,23px);line-height:1.2}
+.pt__list{display:grid;gap:9px;margin-top:14px}
+.pt__list li{display:flex;align-items:center;gap:10px;font-size:15.5px;line-height:1.35}
+.pt__ck{flex:none;color:var(--accent)}
+.pt__sep{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-top:12px;padding-bottom:10px;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.35}
+.pt__sep:first-of-type{margin-top:14px}
+.pt__sep b{flex:none;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pt__col--cta p{margin-top:10px;font-size:15.5px;color:var(--ink-2)}
+.pt :focus-visible{outline-color:var(--accent)}
+.pt__card--brand :focus-visible{outline-color:#fff}
+/* средние ширины: без фото, два тарифа рядом */
+@media (max-width:1100px){
+  .pt__ph{display:none}
+  .pt__row{grid-template-columns:1fr 1fr}
+  .pt__details{grid-template-columns:1fr 1fr}
+  .pt__col--cta{grid-column:1/-1}
 }
+/* телефон: тарифы друг под другом, деталь ниже */
+@media (max-width:640px){
+  .pt{padding-block:36px}
+  .pt__row{grid-template-columns:1fr;gap:10px}
+  .pt__ph{display:block;min-height:0;aspect-ratio:16/10}
+  .pt__ph + .pt__card + .pt__ph{display:none}
+  .pt__card{padding:20px 18px}
+  .pt__t br{display:none}
+  .pt__details{grid-template-columns:1fr;gap:22px}
+  .pt__btn{padding:0 18px}
+}
+@media (max-width:400px){.hof__num{font-size:40px}.hof{column-gap:12px}}
 
-/* ---------- portfolio ---------- */
-.pf{padding-block:clamp(36px,6.5vh,72px)}
-.pf .sec-head{margin-bottom:clamp(16px,2.6vh,28px)}
-/* Сетка-бенто: крупный кадр слева на всю высоту, справа два ряда малых. Высота задана долей экрана. */
-.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));
-  gap:clamp(8px,.9vw,14px);height:clamp(320px,48vh,560px)}
-.bento__i{position:relative;display:block;overflow:hidden;background:var(--paper-2)}
-.bento__i picture,.bento__i img{display:block;width:100%;height:100%}
-.bento__i img{object-fit:cover;transition:transform .9s var(--ease)}
-.bento__i:hover img,.bento__i:focus-visible img{transform:scale(1.06)}
-.bento__i--a{grid-column:1/7;grid-row:1/3}
-.bento__i--b{grid-column:7/10;grid-row:1}
-.bento__i--c{grid-column:10/13;grid-row:1}
-.bento__i--d{grid-column:7/11;grid-row:2}
-.bento__i--e{grid-column:11/13;grid-row:2}
+/* ---------- portfolio («Мероприятия в F-LOFT») — как на боевом сайте ---------- */
+.pf{padding-block:var(--sec)}
+.pf__grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(16px,2vw,28px);row-gap:clamp(28px,3.4vw,52px);align-items:start}
+.shot__img{overflow:hidden;background:var(--paper-2)}
+.shot__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.shot:hover .shot__img img{transform:scale(1.035)}
+.shot figcaption{margin-top:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.shot--a{grid-column:1/9;grid-row:1}
+.shot--a .shot__img{aspect-ratio:3/2}
+.shot--b{grid-column:9/13;grid-row:1/3;margin-top:clamp(40px,7vw,112px)}
+.shot--b .shot__img{aspect-ratio:4/5}
+.shot--c{grid-column:1/4;grid-row:2}
+.shot--c .shot__img{aspect-ratio:4/3}
+.shot--d{grid-column:4/9;grid-row:2}
+.shot--d .shot__img{aspect-ratio:16/10}
+.pf__note{grid-column:9/13;grid-row:2;align-self:end;padding-bottom:34px;font-size:16px;color:var(--ink-2)}
+@media (max-width:760px){
+  .pf__grid{grid-template-columns:repeat(6,1fr);row-gap:28px}
+  .shot--a,.shot--b,.shot--c,.shot--d,.pf__note{grid-row:auto}
+  .shot--a{grid-column:1/-1}
+  .shot--b{grid-column:3/-1;margin-top:0}
+  .shot--c{grid-column:1/5}
+  .shot--d{grid-column:1/-1}
+  .pf__note{grid-column:1/-1;padding-bottom:0}
+}
 
 /* ---------- formats + capacity ---------- */
 .fm{padding-block:var(--sec);background:var(--night);color:#fff}
@@ -404,7 +453,7 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 /* уже 1300px пять пунктов меню подходят вплотную к логотипу — мобильная шапка: звонок · логотип · меню */
 @media (max-width:1300px){
   :root{--hdr-h:64px}
-  .nav,.hdr__phone{display:none}
+  .nav,.hdr__contacts{display:none}
   .hdr__call,.burger{display:inline-flex}
   .hdr__call{justify-self:start;grid-column:1}
   .burger{justify-self:end;grid-column:3}
@@ -421,22 +470,12 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
   .hof__unit{grid-area:unit;white-space:normal;margin:0;font-size:16px;line-height:1.2;align-self:end}
   .hof__cond{grid-area:cond;margin:0;font-size:13px;line-height:1.35;align-self:start}
   .hof .hof__m{display:block}
+  .hof{padding-right:68px}   /* справа на сайте плавает кнопка Telegram — оставляем ей место */
   .hof__cta{grid-area:cta;width:44px;height:44px;min-height:0;margin:0;padding:0;border-radius:50%;justify-content:center;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
   .hof__cta:hover{background:rgba(255,255,255,.14)}
   .hof__ct{display:none}
 
   .usp__list{grid-template-columns:1fr;gap:0}
-  .incl{padding-block:22px}
-  .incl .h2{font-size:22px}
-  .incl__head{margin-bottom:10px}
-  .incl__grid{grid-template-columns:1fr;gap:14px}
-  .incl__h{padding-top:8px;font-size:18px}
-  .pr{margin-top:4px}
-  .pr div{padding:3px 0;font-size:13.5px;gap:10px}
-  .incl__note,.incl__in{font-size:12.5px;line-height:1.4;margin-top:6px}
-  .incl__sub{font-size:12px}
-  .incl__cta{margin-top:12px}
-  .incl__foot{display:none}
   .usp{padding-top:22px}
   .usp__list li{padding-block:18px 26px}
   .usp__list li+li{border-top-color:var(--line)}
@@ -470,15 +509,6 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
   .hero__cta .btn{width:100%}
 
   /* телефон: крупный кадр сверху, под ним два ряда по два кадра разной ширины */
-  .pf{padding-block:26px}
-  .pf .sec-head{gap:4px;margin-bottom:12px}
-  .bento{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:22vh 14vh 14vh;grid-template-rows:22svh 14svh 14svh;height:auto;gap:8px}
-  .bento__i--a{grid-column:1/4;grid-row:1}
-  .bento__i--b{grid-column:1/3;grid-row:2}
-  .bento__i--c{grid-column:3/4;grid-row:2}
-  .bento__i--d{grid-column:2/4;grid-row:3}
-  .bento__i--e{grid-column:1/2;grid-row:3}
-  .pf .h2{font-size:26px}
 
   /* вместимость: горизонтальная лента со свайпом */
   .cap{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);
@@ -537,6 +567,16 @@ body.menu-open .hdr{color:var(--ink);background:var(--paper);box-shadow:none}
 
 /* низкие телефоны: галерея ниже, чтобы блок «Мероприятия» остался в 3/4 экрана */
 @media (max-width:760px) and (max-height:700px){
-  .pf{padding-block:20px}
-  .bento{grid-template-rows:19vh 12vh 12vh;grid-template-rows:19svh 12svh 12svh}
 }
+
+/* ---------- f-loft.ru: разметка Contact Form 7 ---------- */
+.agree .wpcf7-form-control-wrap,.agree .wpcf7-list-item{display:block;margin:0}
+.wpcf7-not-valid-tip{display:block;margin-top:4px;font-size:13px;line-height:1.35;color:var(--accent)}
+.wpcf7-response-output{margin:0;font-size:14px;line-height:1.35;color:var(--accent)}
+.wpcf7-response-output:empty,.wpcf7-form.sent .wpcf7-response-output,.wpcf7-form.init .wpcf7-response-output{display:none}
+.wpcf7-spinner{display:none}
+.wpcf7-form.submitting .wpcf7-submit{opacity:.6;pointer-events:none}
+.screen-reader-response{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.wpcf7 form .hidden-fields-container,.wpcf7 fieldset.hidden-fields-container{display:none}
+/* Ловушка антиспама WP Armour: на сайте её прячут стили плагина, здесь их нет */
+.altEmail_container,.wpa_hidden_field{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}

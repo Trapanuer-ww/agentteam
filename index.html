@@ -7,16 +7,16 @@
 <meta name="robots" content="noindex, nofollow">
 
 <!-- Title, description, canonical и Open Graph — как на текущей главной f-loft.ru (не менялись) -->
-<title>Аренда лофта на Бауманской для мероприятий Формат Лофт</title>
-<meta name="description" content="Формат Лофт — аренда лофта 1100 м2 на Бауманской. Площадка для конференций, фуршетов, банкетов. Белый лофт для свадеб, корпоративов и съемок. Центр Москвы.">
+<title>Аренда лофта в Москве на Бауманской — Формат Лофт</title>
+<meta name="description" content="Аренда лофта в Москве у метро Бауманская: конференции, фуршеты, банкеты и корпоративы до 300 гостей. Два уровня, сцена и LED-экран. Цена от 200 000 ₽ за сутки.">
 <link rel="canonical" href="https://f-loft.ru/">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Аренда лофта на Бауманской для мероприятий Формат Лофт">
-<meta property="og:description" content="Формат Лофт — аренда лофта 1100 м2 на Бауманской. Площадка для конференций, фуршетов, банкетов. Белый лофт для свадеб, корпоративов и съемок. Центр Москвы.">
+<meta property="og:title" content="Аренда лофта в Москве на Бауманской — Формат Лофт">
+<meta property="og:description" content="Аренда лофта в Москве у метро Бауманская: конференции, фуршеты, банкеты и корпоративы до 300 гостей. Два уровня, сцена и LED-экран. Цена от 200 000 ₽ за сутки.">
 <meta property="og:url" content="https://f-loft.ru/">
 <meta property="og:site_name" content="F-Loft">
-<meta property="og:image" content="assets/img/og.jpg">
+<meta property="og:image" content="https://f-loft.ru/wp-content/mu-plugins/floft-home/assets/img/og.jpg">
 <meta name="theme-color" content="#121211">
 <link rel="icon" href="assets/img/logo.png">
 
@@ -26,29 +26,42 @@
       imagesrcset="assets/img/hero-m-600.avif 600w, assets/img/hero-m-900.avif 900w" imagesizes="100vw" media="(max-width: 700px)">
 <link rel="preload" as="image" type="image/avif" fetchpriority="high"
       imagesrcset="assets/img/hero-1280.avif 1280w, assets/img/hero-1920.avif 1920w" imagesizes="100vw" media="(min-width: 701px)">
-<link rel="stylesheet" href="css/home.css?v=1016c">
+<link rel="stylesheet" href="css/home.css?v=1023a">
+<link rel="stylesheet" href="css/tour3d.css?v=1022b">
 <script>document.documentElement.classList.add('js')</script>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Format Loft",
+  "@type": [
+    "EventVenue",
+    "LocalBusiness"
+  ],
+  "@id": "https://f-loft.ru/#venue",
+  "name": "Формат Лофт (F-LOFT)",
   "url": "https://f-loft.ru/",
+  "description": "Лофт для мероприятий в Москве у метро Бауманская: два уровня, потолки 5,4 м, конференции и фуршеты до 300 гостей, банкеты до 200.",
   "logo": "https://f-loft.ru/wp-content/uploads/2021/11/152-1-150x150-optimized.png",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+7 985 999 39 79",
-    "contactType": "customer service",
-    "areaServed": "RU",
-    "availableLanguage": "ru-RU"
-  },
+  "image": "https://f-loft.ru/wp-content/mu-plugins/floft-home/assets/img/og.jpg",
+  "telephone": "+7 985 999 39 79",
+  "priceRange": "от 200 000 ₽ за сутки",
+  "maximumAttendeeCapacity": 300,
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Спартаковская площадь, 16/15, строение 6",
     "addressLocality": "Москва",
     "postalCode": "105082",
     "addressCountry": "RU"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Москва"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+7 985 999 39 79",
+    "contactType": "customer service",
+    "availableLanguage": "ru-RU"
   }
 }
 </script>
@@ -90,10 +103,16 @@
       <span>F-LOFT</span>
     </a>
 
-    <a class="chip chip--fill hdr__phone" href="tel:+79859993979">
-      <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M6.6 3.5h2.7l1.5 4-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4 1.5v2.7a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-      +7 985 999-39-79
-    </a>
+    <div class="hdr__contacts">
+      <a class="chip chip--fill hdr__phone" href="tel:+79859993979">
+        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M6.6 3.5h2.7l1.5 4-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4 1.5v2.7a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        +7 985 999-39-79
+      </a>
+      <a class="chip chip--fill hdr__mail" href="mailto:f@f-loft.ru">
+        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        f@f-loft.ru
+      </a>
+    </div>
 
     <button class="chip chip--icon burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Открыть меню">
       <span></span><span></span>
@@ -139,14 +158,14 @@
   </picture>
 
   <div class="wrap hero__in">
-    <h1 class="hero__title" id="hero-title">Лофт для мероприятий <span>в 5 минутах</span> <span>от Бауманской</span></h1>
+    <h1 class="hero__title" id="hero-title">Лофт для мероприятий <span>в Москве, в 5 минутах</span> <span>от Бауманской</span></h1>
     <p class="hero__sub">Конференции, корпоративы, банкеты и фуршеты.</p>
 
     <!-- Оффер «Корпоратив в будни» (тест-гипотеза 2026-10-15). Условия НЕ утверждены Marketing Lead: даты пн–ср и текст условий уточнить до переноса на f-loft.ru.
          «−20% на повторное мероприятие» убрано 16.10 по решению ML (не было определено, что считается повторным). Кнопка открывает ту же форму (data-intent="offer"). -->
     <aside class="hof" id="weekday" aria-label="Предложение для корпоративов">
       <p class="hof__big"><span class="hof__num" data-count="50">−50%</span><span class="hof__unit">на аренду корпоративов в будни</span></p>
-      <p class="hof__cond"><span class="hof__d">Пн, вт и ср · декабрь и январь</span><span class="hof__c">При заказе банкета или фуршета от 3F&#8209;catering</span><span class="hof__m">Пн–ср · дек–янв · с кейтерингом</span></p>
+      <p class="hof__cond"><span class="hof__d">Пн, вт и ср · декабрь и январь</span><span class="hof__c">При заказе банкета или фуршета</span><span class="hof__m">Пн–ср · дек–янв · при заказе банкета или фуршета</span></p>
       <button class="btn hof__cta" type="button" data-open-form data-intent="offer" aria-label="Проверить свободные даты">
         <span class="hof__ct">Проверить свободные даты</span>
         <svg class="arr" viewBox="0 0 18 10" width="18" height="10" aria-hidden="true"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
@@ -179,98 +198,137 @@
   </div>
 </section>
 
-<!-- ============================ СТОИМОСТЬ ============================
-     Что входит в аренду и сколько стоит. Цены — из внутреннего прайса «Расчет_стоимости_мероприятия_2026.xlsx»
-     (источник истины, решение ML 24.09). Цены на главной — решение ML от 16.10 (раньше на главной цифр не было).
-     Блок не выше 3/4 экрана. Кнопка открывает то же окно заявки (data-intent="calc"). -->
-<section class="incl" id="price" aria-labelledby="incl-title">
+<!-- ============================ МЕРОПРИЯТИЯ В F-LOFT ============================
+     Как на боевом f-loft.ru (проверено 16.10): четыре кадра с подписями — фуршет, главный зал, лаунж-зона, сцена и свет — и строка про портфолио.
+     Картинки скачаны с f-loft.ru (assets/img/pf-*). Стили .pf / .shot — те же, что на сайте. -->
+<section class="pf" aria-labelledby="pf-title">
   <div class="wrap">
-    <header class="incl__head" data-rv>
-      <h2 class="h2" id="incl-title">Что входит в стоимость и сколько это стоит</h2>
+    <header class="sec-head" data-rv>
+      <h2 class="h2" id="pf-title">Мероприятия в F-LOFT</h2>
+      <a class="more" href="https://f-loft.ru/gallery/foto-proektov/">Смотреть портфолио <svg class="arr" viewBox="0 0 18 10" width="18" height="10" aria-hidden="true"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
     </header>
-    <div class="incl__grid" data-rv>
-      <div class="incl__col">
-        <h3 class="incl__h">Аренда зала на сутки</h3>
-        <p class="incl__sub">с 7:00 до 03:00 · с кейтерингом партнёра 3F-catering</p>
-        <dl class="pr">
-          <div><dt>Будни, воскресенье – четверг</dt><dd>200 000 ₽</dd></div>
-          <div><dt>Пятница, суббота</dt><dd>280 000 ₽</dd></div>
-          <div class="x"><dt>Без кейтеринга: будни / пт–сб</dt><dd>330 000 / 400 000 ₽</dd></div>
-          <div><dt>Декабрь 2026: обычные / пиковые даты</dt><dd>500 000 / 600 000 ₽</dd></div>
-          <div class="x"><dt>Почасово: будни / пт–сб</dt><dd>25 000 / 30 000 ₽ в час</dd></div>
-        </dl>
-        <p class="incl__note x">Пиковые даты декабря — 10–12, 17–19 и 24–26. Почасово: от 4 часов в будни, от 6 часов в пятницу и субботу.</p>
-        <p class="incl__in"><b>Входит в аренду:</b> весь зал на два уровня, мебель, 170 складных стульев, бар с оборудованием, гардероб, администратор смены, клининг.</p>
-      </div>
-      <div class="incl__col">
-        <h3 class="incl__h">Оплачивается отдельно</h3>
-        <p class="incl__sub">еда — только партнёр 3F-catering, цена «от»</p>
-        <dl class="pr">
-          <div><dt>Техника: LED-экран, свет, звук</dt><dd>115 000 ₽</dd></div>
-          <div class="m-only"><dt>Еда на гостя, от</dt><dd>кофе-брейк 2 500 · фуршет 6 500 · банкет 10 500 ₽</dd></div>
-          <div class="x"><dt>Кофе-брейк</dt><dd>от 2 500 ₽</dd></div>
-          <div class="x"><dt>Фуршет</dt><dd>от 6 500 ₽</dd></div>
-          <div class="x"><dt>Банкет</dt><dd>от 10 500 ₽</dd></div>
-          <div><dt>Парковка, за место</dt><dd>1 500 ₽</dd></div>
-          <div class="x"><dt>Гардеробщик, второй администратор, доп. уборка</dt><dd>10 000 – 20 000 ₽</dd></div>
-        </dl>
-        <p class="incl__note x">Еду готовит только партнёр площадки 3F-catering. Гардеробщик — на каждые 100 гостей; второй администратор — при гостях свыше 250; доп. уборка — при конфетти или гостях свыше 200. Парковка: 5 мест в будни, 15 в выходные.</p>
-      </div>
-    </div>
-    <div class="incl__cta" data-rv>
-      <button class="btn btn--accent" type="button" data-open-form data-intent="calc">Получить расчёт на мою дату</button>
-      <p class="incl__foot">Точный расчёт под вашу дату и формат пришлём после заявки.</p>
-      <a class="incl__full" href="https://f-loft.ru/price/" target="_blank" rel="noopener">Полный прайс</a>
+    <div class="pf__grid">
+      <figure class="shot shot--a" data-rv>
+        <div class="shot__img">
+          <picture>
+            <source type="image/avif" srcset="assets/img/pf-a-800.avif 800w, assets/img/pf-a-1280.avif 1280w" sizes="(max-width: 760px) 100vw, 60vw">
+            <source type="image/webp" srcset="assets/img/pf-a-800.webp 800w, assets/img/pf-a-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 60vw">
+            <img src="assets/img/pf-a-800.webp" width="1280" height="852" alt="Фуршетная зона F-LOFT: коктейльные столы, световые панели на стенах и хрустальная люстра" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Фуршет</figcaption>
+      </figure>
+      <figure class="shot shot--b" data-rv>
+        <div class="shot__img">
+          <picture>
+            <source type="image/avif" srcset="assets/img/pf-b-480.avif 480w, assets/img/pf-b-720.avif 720w" sizes="(max-width: 760px) 66vw, 30vw">
+            <source type="image/webp" srcset="assets/img/pf-b-480.webp 480w, assets/img/pf-b-720.webp 720w" sizes="(max-width: 760px) 66vw, 30vw">
+            <img src="assets/img/pf-b-480.webp" width="720" height="900" alt="Главный зал F-LOFT с высокими потолками, лестницей на антресоль и коктейльными столами" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Главный зал</figcaption>
+      </figure>
+      <figure class="shot shot--c" data-rv>
+        <div class="shot__img">
+          <picture>
+            <source type="image/avif" srcset="assets/img/pf-c-600.avif 600w, assets/img/pf-c-900.avif 900w" sizes="(max-width: 760px) 66vw, 22vw">
+            <source type="image/webp" srcset="assets/img/pf-c-600.webp 600w, assets/img/pf-c-900.webp 900w" sizes="(max-width: 760px) 66vw, 22vw">
+            <img src="assets/img/pf-c-600.webp" width="900" height="675" alt="Лаунж-зона F-LOFT: кожаные диваны, кресла и ковёр на фоне подсвеченных стен" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Лаунж-зона</figcaption>
+      </figure>
+      <figure class="shot shot--d" data-rv>
+        <div class="shot__img">
+          <picture>
+            <source type="image/avif" srcset="assets/img/pf-stage-800.avif 800w, assets/img/pf-stage-1280.avif 1280w" sizes="(max-width: 760px) 100vw, 38vw">
+            <source type="image/webp" srcset="assets/img/pf-stage-800.webp 800w, assets/img/pf-stage-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 38vw">
+            <img src="assets/img/pf-stage-800.webp" width="1280" height="800" alt="Сцена F-LOFT с концертным светом и логотипом F-LOFT на экране" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Сцена и свет</figcaption>
+      </figure>
+      <p class="pf__note" data-rv>В портфолио — фото лофта и проектов, видеообзор и планы помещений.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================ ПЛОЩАДКА ============================
-     Пять кадров самой площадки (без гостей): главный зал, сцена, второй уровень, лаунж, двор.
-     Сетка-бенто, высота привязана к высоте экрана — блок не выше 3/4 экрана. Каждый кадр ведёт в «Фото лофта». -->
-<section class="pf" aria-labelledby="pf-title">
+<!-- ============================ ПРАЙС (карточки тарифов) ============================
+     Сделано по исследованию 20.10 (reports/_agent_outputs/08_tariff_block_research.md) и референсу ML — прайс падел-клуба WE are PADEL:
+     ряд «фото · светлый тариф · фото · цветной тариф», внутри «Будние дни» / «Выходные дни», цена обычного размера, «сутки · до 300 гостей», кнопка «Подробнее».
+     Правило из исследования: цена не героиня блока; на карточках только аренда зала (4 цифры), остальное — спокойной строкой ниже (#price-details).
+     Цены — внутренний прайс (источник истины, решение ML 24.09): с кейтерингом 3F — вс–чт 200 000, пт–сб 280 000; без кейтеринга — 330 000 / 400 000;
+     оборудование 115 000; еда от 6 000 на гостя (решение ML 16.10). «Аренда от 250 000» (слова ML) в прайсе не найдена — сверить. -->
+<section class="pt" id="price" aria-labelledby="pt-title">
   <div class="wrap">
-    <header class="sec-head" data-rv>
-      <h2 class="h2" id="pf-title">Площадка F-LOFT</h2>
-      <a class="more" href="https://f-loft.ru/gallery/foto-lofta/">Смотреть фото лофта <svg class="arr" viewBox="0 0 18 10" width="18" height="10" aria-hidden="true"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
-    </header>
+    <p class="pt__eyebrow" data-rv><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="8.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 12.5L14.5 7.5" stroke="currentColor" stroke-width="1.6"/></svg>Прайс</p>
+    <h2 class="pt__h" id="pt-title" data-rv>Аренда лофта на Бауманской: сколько стоит и что входит в цену</h2>
 
-    <div class="bento">
-      <a class="bento__i bento__i--a" href="https://f-loft.ru/gallery/foto-lofta/" data-rv>
+    <div class="pt__row">
+      <figure class="pt__ph" data-rv>
         <picture>
-          <source type="image/avif" srcset="assets/img/sp-hall-800.avif 800w, assets/img/sp-hall-1400.avif 1400w" sizes="(max-width: 760px) 100vw, 50vw">
-          <source type="image/webp" srcset="assets/img/sp-hall-800.webp 800w, assets/img/sp-hall-1400.webp 1400w" sizes="(max-width: 760px) 100vw, 50vw">
-          <img src="assets/img/sp-hall-800.webp" width="800" height="533" alt="Главный зал F-LOFT при дневном свете: белые стены, высокие окна, световая люстра" loading="lazy" decoding="async">
+          <source type="image/avif" srcset="assets/img/pr-food-683.avif" sizes="(max-width: 700px) 100vw, 25vw">
+          <source type="image/webp" srcset="assets/img/pr-food-683.webp" sizes="(max-width: 700px) 100vw, 25vw">
+          <img src="assets/img/pr-food-683.webp" width="683" height="1024" alt="Фуршетный стол F-LOFT с закусками и тёплой подсветкой" loading="lazy" decoding="async">
         </picture>
-      </a>
-      <a class="bento__i bento__i--b" href="https://f-loft.ru/gallery/foto-lofta/" data-rv>
+      </figure>
+
+      <article class="pt__card" data-rv>
+        <h3 class="pt__t">Аренда зала<br> с кейтерингом</h3>
+        <p class="pt__sub">Сутки с 07:00 до 03:00 · партнёр 3F-catering</p>
+        <p class="pt__grp">Будние дни</p>
+        <p class="pt__line"><span>Вс–чт</span><b><i>от</i> 200&nbsp;000&nbsp;₽</b></p>
+        <p class="pt__grp">Выходные и праздничные дни</p>
+        <p class="pt__line"><span>Пт, сб</span><b><i>от</i> 280&nbsp;000&nbsp;₽</b></p>
+        <div class="pt__foot">
+          <p>Сутки<br>до 300 гостей</p>
+          <a class="pt__btn" href="#price-details">Подробнее</a>
+        </div>
+      </article>
+
+      <figure class="pt__ph" data-rv>
         <picture>
-          <source type="image/avif" srcset="assets/img/sp-stage-480.avif 480w, assets/img/sp-stage-760.avif 760w" sizes="(max-width: 760px) 66vw, 25vw">
-          <source type="image/webp" srcset="assets/img/sp-stage-480.webp 480w, assets/img/sp-stage-760.webp 760w" sizes="(max-width: 760px) 66vw, 25vw">
-          <img src="assets/img/sp-stage-480.webp" width="480" height="320" alt="Сцена F-LOFT с LED-экраном и акустикой" loading="lazy" decoding="async">
+          <source type="image/avif" srcset="assets/img/pr-stage-683.avif" sizes="(max-width: 700px) 100vw, 25vw">
+          <source type="image/webp" srcset="assets/img/pr-stage-683.webp" sizes="(max-width: 700px) 100vw, 25vw">
+          <img src="assets/img/pr-stage-683.webp" width="683" height="1024" alt="Выступление на сцене F-LOFT: барабанщик в наушниках на фоне светящейся вывески" loading="lazy" decoding="async">
         </picture>
-      </a>
-      <a class="bento__i bento__i--c" href="https://f-loft.ru/gallery/foto-lofta/" data-rv>
-        <picture>
-          <source type="image/avif" srcset="assets/img/sp-level2-480.avif 480w, assets/img/sp-level2-760.avif 760w" sizes="(max-width: 760px) 34vw, 25vw">
-          <source type="image/webp" srcset="assets/img/sp-level2-480.webp 480w, assets/img/sp-level2-760.webp 760w" sizes="(max-width: 760px) 34vw, 25vw">
-          <img src="assets/img/sp-level2-480.webp" width="480" height="320" alt="Второй уровень F-LOFT: галерея с видом на главный зал" loading="lazy" decoding="async">
-        </picture>
-      </a>
-      <a class="bento__i bento__i--d" href="https://f-loft.ru/gallery/foto-lofta/" data-rv>
-        <picture>
-          <source type="image/avif" srcset="assets/img/sp-lounge-640.avif 640w, assets/img/sp-lounge-1000.avif 1000w" sizes="(max-width: 760px) 66vw, 33vw">
-          <source type="image/webp" srcset="assets/img/sp-lounge-640.webp 640w, assets/img/sp-lounge-1000.webp 1000w" sizes="(max-width: 760px) 66vw, 33vw">
-          <img src="assets/img/sp-lounge-640.webp" width="640" height="320" alt="Лаунж-зона F-LOFT: диван, кресла и зелёные панно на белой стене" loading="lazy" decoding="async">
-        </picture>
-      </a>
-      <a class="bento__i bento__i--e" href="https://f-loft.ru/gallery/foto-lofta/" data-rv>
-        <picture>
-          <source type="image/avif" srcset="assets/img/sp-yard-400.avif 400w, assets/img/sp-yard-600.avif 600w" sizes="(max-width: 760px) 34vw, 17vw">
-          <source type="image/webp" srcset="assets/img/sp-yard-400.webp 400w, assets/img/sp-yard-600.webp 600w" sizes="(max-width: 760px) 34vw, 17vw">
-          <img src="assets/img/sp-yard-400.webp" width="400" height="400" alt="Внутренний двор кластера, где находится F-LOFT" loading="lazy" decoding="async">
-        </picture>
-      </a>
+      </figure>
+
+      <article class="pt__card pt__card--brand" data-rv>
+        <h3 class="pt__t">Аренда зала<br> без кейтеринга</h3>
+        <p class="pt__sub">Сутки с 07:00 до 03:00</p>
+        <p class="pt__grp">Будние дни</p>
+        <p class="pt__line"><span>Вс–чт</span><b><i>от</i> 330&nbsp;000&nbsp;₽</b></p>
+        <p class="pt__grp">Выходные и праздничные дни</p>
+        <p class="pt__line"><span>Пт, сб</span><b><i>от</i> 400&nbsp;000&nbsp;₽</b></p>
+        <p class="pt__star">* Концерты, выставки, ярмарки и мероприятия без кейтеринга площадки.</p>
+        <div class="pt__foot">
+          <p>Сутки<br>до 300 гостей</p>
+          <a class="pt__btn" href="#price-details">Подробнее</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="pt__details" id="price-details" data-rv>
+      <div class="pt__col">
+        <h3>Входит в аренду</h3>
+        <ul class="pt__list">
+          <li><svg class="pt__ck" viewBox="0 0 14 11" width="14" height="11" aria-hidden="true"><path d="M1 5.5l4 4L13 1.5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>Зал на два уровня</li>
+          <li><svg class="pt__ck" viewBox="0 0 14 11" width="14" height="11" aria-hidden="true"><path d="M1 5.5l4 4L13 1.5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>Мебель и 170 стульев</li>
+          <li><svg class="pt__ck" viewBox="0 0 14 11" width="14" height="11" aria-hidden="true"><path d="M1 5.5l4 4L13 1.5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>Бар с оборудованием, гардероб</li>
+          <li><svg class="pt__ck" viewBox="0 0 14 11" width="14" height="11" aria-hidden="true"><path d="M1 5.5l4 4L13 1.5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>Администратор и клининг</li>
+        </ul>
+      </div>
+      <div class="pt__col">
+        <h3>Считается отдельно</h3>
+        <p class="pt__sep"><span>Оборудование: LED-экран, свет, звук</span> <b>115&nbsp;000&nbsp;₽</b></p>
+        <p class="pt__sep"><span>Кейтеринг 3F-catering, на гостя</span> <b>от 6&nbsp;000&nbsp;₽</b></p>
+      </div>
+      <div class="pt__col pt__col--cta">
+        <h3>Декабрь — отдельные тарифы</h3>
+        <p>Назовите дату и формат — пришлём расчёт.</p>
+        <button class="pt__btn pt__btn--solid" type="button" data-open-form data-intent="calc">Рассчитать на мою дату</button>
+      </div>
     </div>
   </div>
 </section>
@@ -341,6 +399,49 @@
       <li><a href="https://f-loft.ru/services/ploshhadka-dlya-master-klassa/"><span class="rows__name">Мастер-классы</span><span class="rows__txt">Гибкая планировка, отдельные комнаты</span><svg class="arr" viewBox="0 0 18 10" width="18" height="10" aria-hidden="true"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a></li>
       <li><a href="https://f-loft.ru/services/kulinarnye-master-klassy/"><span class="rows__name">Кулинарные мастер-классы</span><span class="rows__txt">Занятия с шеф-поварами</span><svg class="arr" viewBox="0 0 18 10" width="18" height="10" aria-hidden="true"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a></li>
     </ul>
+  </div>
+</section>
+
+<!-- ============================ ПЛОЩАДКА В 3D ============================
+     Интерактивная модель по планам БТИ (js/hall3d.js, Three.js с cdnjs). Грузится лениво, когда секция близко к экрану.
+     Колесо мыши листает страницу, пока по модели не кликнули; на телефоне вращение включается кнопкой, чтобы не блокировать прокрутку. -->
+<section class="t3" id="tour3d" data-mode="evening" aria-labelledby="t3-title">
+  <div class="wrap">
+    <header class="sec-head" data-rv>
+      <div>
+        <h2 class="h2" id="t3-title">Осмотрите площадку в 3D до визита</h2>
+        <p class="t3__lead">Два уровня, сцена, бар и балкон. Переключайте этаж, расстановку и свет.</p>
+      </div>
+      <button class="more" type="button" data-open-form data-intent="calc">Узнать стоимость на мою дату <svg class="arr" viewBox="0 0 18 10" width="18" height="10" aria-hidden="true"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+    </header>
+    <div class="t3__stage" role="region" aria-label="Интерактивная 3D-модель площадки F-LOFT">
+      <canvas id="c" aria-label="3D-модель площадки F-LOFT: два уровня"></canvas>
+      <div id="hots"></div>
+      <div class="t3__top">
+        <div class="t3__grp" role="group" aria-label="Уровень"><b>Уровень</b><button type="button" data-level="both" aria-pressed="true">Оба</button><button type="button" data-level="1" aria-pressed="false">1 этаж</button><button type="button" data-level="2" aria-pressed="false">2 этаж</button></div>
+        <div class="t3__grp" role="group" aria-label="Расстановка"><b>Формат</b><button type="button" data-fmt="empty" aria-pressed="true">Пустой зал</button><button type="button" data-fmt="buffet" aria-pressed="false">Фуршет</button><button type="button" data-fmt="banquet" aria-pressed="false">Банкет</button><button type="button" data-fmt="theatre" aria-pressed="false">Конференция</button></div>
+        <div class="t3__grp" role="group" aria-label="Освещение"><b>Свет</b><button type="button" data-mode="day" aria-pressed="false">День</button><button type="button" data-mode="evening" aria-pressed="true">Вечер</button></div>
+      </div>
+      <div class="t3__cap" aria-live="polite"><strong id="fmtCap">Зал без расстановки</strong><span id="fmtNote"></span></div>
+      <button class="t3__ctl" id="t3Ctl" type="button" aria-pressed="false" hidden>Крутить модель пальцем</button>
+      <button type="button" class="t3__open" id="zOpen" hidden>Описание зон</button>
+      <aside class="t3__story" aria-label="Описание зоны">
+        <button type="button" class="t3__x" id="zClose" aria-label="Закрыть описание">×</button>
+        <img id="zImg" src="assets/zones/hall.webp" alt="Главный зал F-LOFT" width="720" height="450" loading="lazy">
+        <div class="t3__in">
+          <div class="t3__kr"><div class="t3__k" id="zIdx">02 / 08</div><button type="button" class="t3__more" id="zMore" aria-expanded="false" aria-controls="zText">Подробнее</button></div>
+          <h3 id="zTitle">Главный зал, 428 м²</h3>
+          <p id="zText">Длинный зал: полированный бетон серо-бежевого оттенка, белые колонны и балки, пять больших окон с тёмными шторами. Расстановку можно менять: фуршет, банкет, конференцию.</p>
+          <ul class="t3__facts" id="zFacts"><li>Потолки 5,4 м</li><li>Фуршет и конференция — до 300 гостей</li><li>Банкет — до 200 гостей</li></ul>
+          <div class="t3__nav"><button type="button" class="t3__ar" id="zPrev" aria-label="Предыдущая зона">←</button><button type="button" class="t3__ar" id="zNext" aria-label="Следующая зона">→</button><div class="t3__tabs" id="zoneTabs"></div></div>
+        </div>
+      </aside>
+      <div class="t3__hint">Мышь или палец — вращение, клик по модели включает колесо — масштаб, правая кнопка — сдвиг.<button type="button" id="overview">Общий вид</button><button type="button" id="auto" aria-pressed="true">Облёт</button>
+        <em>Модель собрана по планам БТИ и инвентарю площадки. Отделка и мелкий декор упрощены, высота 2-го уровня оценена.</em></div>
+      <noscript><p style="position:absolute;inset:auto 16px 16px;z-index:6;color:#fff">3D-модель площадки работает при включённом JavaScript. Фото зала смотрите в портфолио.</p></noscript>
+      <div id="fallback" hidden><p>Ваш браузер не показывает 3D. Посмотрите фото и видеообзор площадки в портфолио.</p></div>
+      <div id="loading" aria-live="polite"><p>Собираем площадку…</p></div>
+    </div>
   </div>
 </section>
 
@@ -535,6 +636,6 @@
   <button class="btn btn--line btn--sm" type="button" id="cookie-ok">Подтверждаю</button>
 </div>
 
-<script src="js/home.js?v=1016b" defer></script>
+<script src="js/home.js?v=1022a" defer></script>
 </body>
 </html>
